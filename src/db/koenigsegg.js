@@ -1,0 +1,28 @@
+export const koenigsegg_models = [
+  {
+    id: 1,
+    year: 2009,
+    brand: "Koenigsegg",
+    model: "CCX-R Edition",
+    topspeed: 403,
+    power: 759,
+    acceleration: 2.9,
+    weight: 1428,
+    cylinder: 8,
+    torgue: 1079,
+    img: "2009_Koenigsegg_CCX-R_Edition.jpg",
+  },
+  {
+    id: 2,
+    year: 2011,
+    brand: "Koenigsegg",
+    model: "Agera",
+    topspeed: 420,
+    power: 705,
+    acceleration: 3.0,
+    weight: 1435,
+    cylinder: 8,
+    torgue: 1100,
+    img: "2011_Koenigsegg_Agera.jpg",
+  },
+];

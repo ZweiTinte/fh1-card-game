@@ -1,0 +1,28 @@
+export const mini_models = [
+  {
+    id: 1,
+    year: 1965,
+    brand: "MINI",
+    model: "Cooper S",
+    topspeed: 159,
+    power: 56,
+    acceleration: 10.4,
+    weight: 671,
+    cylinder: 4,
+    torgue: 108,
+    img: "1965_MINI_Cooper_S.jpg",
+  },
+  {
+    id: 2,
+    year: 2011,
+    brand: "MINI",
+    model: "Cooper S",
+    topspeed: 240,
+    power: 135,
+    acceleration: 6.4,
+    weight: 1215,
+    cylinder: 4,
+    torgue: 240,
+    img: "2011_MINI_Cooper_S.jpg",
+  },
+];

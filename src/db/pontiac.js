@@ -1,0 +1,28 @@
+export const pontiac_models = [
+  {
+    id: 1,
+    year: 1969,
+    brand: "Pontiac",
+    model: "GTO Judge",
+    topspeed: 195,
+    power: 272,
+    acceleration: 5.4,
+    weight: 1643,
+    cylinder: 8,
+    torgue: 603,
+    img: "1969_Pontiac_GTO_Judge.jpg",
+  },
+  {
+    id: 2,
+    year: 1977,
+    brand: "Pontiac",
+    model: "Firebird Trans Am",
+    topspeed: 190,
+    power: 150,
+    acceleration: 8.1,
+    weight: 1724,
+    cylinder: 8,
+    torgue: 441,
+    img: "1977_Pontiac_Firebird_Trans_Am.jpg",
+  },
+];

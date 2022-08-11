@@ -1,0 +1,28 @@
+export const bugatti_models = [
+  {
+    id: 1,
+    year: 1992,
+    brand: "Bugatti",
+    model: "EB110 Super Sport",
+    topspeed: 342,
+    power: 456,
+    acceleration: 3.5,
+    weight: 1418,
+    cylinder: 12,
+    torgue: 651,
+    img: "1992_Bugatti_EB110_Super_Sport.jpg",
+  },
+  {
+    id: 2,
+    year: 2011,
+    brand: "Bugatti",
+    model: "Veyron Super Sport",
+    topspeed: 434,
+    power: 882,
+    acceleration: 2.8,
+    weight: 1834,
+    cylinder: 16,
+    torgue: 1499,
+    img: "2011_Bugatti_Veyron_Super_Sport.jpg",
+  },
+];

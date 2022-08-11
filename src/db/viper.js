@@ -1,0 +1,28 @@
+export const viper_models = [
+  {
+    id: 1,
+    year: 2010,
+    brand: "Viper",
+    model: "SRT10 ACR-X",
+    topspeed: 328,
+    power: 477,
+    acceleration: 3.6,
+    weight: 1447,
+    cylinder: 10,
+    torgue: 820,
+    img: "2010_Viper_SRT10_ACR-X.jpg",
+  },
+  {
+    id: 2,
+    year: 2013,
+    brand: "Viper",
+    model: "GTS",
+    topspeed: 332,
+    power: 477,
+    acceleration: 3.4,
+    weight: 1495,
+    cylinder: 10,
+    torgue: 813,
+    img: "2013_Viper_GTS.jpg",
+  },
+];

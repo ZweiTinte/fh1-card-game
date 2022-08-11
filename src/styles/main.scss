@@ -1,31 +1,41 @@
+$black: #000000;
+$defaultPadding: 0.5rem;
+
 button {
-    justify-content: center;
+    justify-content: left;
     outline: none;
+    width: 20rem;
     text-align: center;
     font-weight: 400;
     font-style: normal;
     line-height: normal;
     display: inline-flex;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: $defaultPadding;
     font-size: 1rem;
     color: #ffffff;
     background-color: #303030;
     border-radius: 0.2rem;
-    border-color: #35daf0;
+    border-color: #2acbe0;
 }
 
 button:hover {
-    background-color: #46dcf0;;
-    color: #000000;
+    background-color: #24afc2;;
+    color: $black;
 }
 
 body {
-    background-color: #000000;
+    background-color: $black;
     height: '100vh';
     min-height: '100vh';
 }
 
 .buttonSpacer {
-    padding: 0.5rem;
+    padding: $defaultPadding;
+}
+
+.image {
+    width: 20rem;
+    height: auto;
+    padding: $defaultPadding;
 }

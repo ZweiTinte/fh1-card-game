@@ -1,0 +1,28 @@
+export const abarth_models = [
+  {
+    id: 3,
+    year: 1968,
+    brand: "Abarth",
+    model: "595 esseesse",
+    topspeed: 130,
+    power: 23.5,
+    acceleration: 24.7,
+    weight: 570,
+    cylinder: 2,
+    torgue: 44,
+    img: "1968_Abarth_595_esseesse.jpg",
+  },
+  {
+    id: 2,
+    year: 2010,
+    brand: "Abarth",
+    model: "500 esseesse",
+    topspeed: 211,
+    power: 118,
+    acceleration: 7.4,
+    weight: 1110,
+    cylinder: 4,
+    torgue: 230,
+    img: "2010_Abarth_500_esseesse.jpg",
+  },
+];
