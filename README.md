@@ -9,3 +9,7 @@ Installation:
 Run the App:
 
 - gatsby develop
+
+Run the JSON Server
+
+- json-server --watch db.json --port 3000
