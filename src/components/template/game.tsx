@@ -3,7 +3,8 @@ import Card from "../level2/card";
 
 const Game = () => {
   return (
-    <div>
+    <div className="gameLayout">
+      <Card />
       <Card />
     </div>
   );

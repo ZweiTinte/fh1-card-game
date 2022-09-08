@@ -43,7 +43,7 @@ const Card = () => {
   return (
     <div>
       {templateReady && (
-        <div>
+        <div className="card">
           <Image src={image} alt={currentCard.img} />
           <ButtonGroup buttons={cardData} />
         </div>

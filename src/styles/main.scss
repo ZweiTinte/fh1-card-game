@@ -1,5 +1,5 @@
 $black: #000000;
-$defaultPadding: 0.5rem;
+$defaultSpace: 0.5rem;
 
 button {
     justify-content: left;
@@ -11,7 +11,7 @@ button {
     line-height: normal;
     display: inline-flex;
     cursor: pointer;
-    padding: $defaultPadding;
+    padding: $defaultSpace;
     font-size: 1rem;
     color: #ffffff;
     background-color: #303030;
@@ -20,7 +20,7 @@ button {
 }
 
 button:hover {
-    background-color: #24afc2;;
+    background-color: #24afc2;
     color: $black;
 }
 
@@ -31,11 +31,29 @@ body {
 }
 
 .buttonSpacer {
-    padding: $defaultPadding;
+    padding: $defaultSpace;
 }
 
 .image {
     width: 20rem;
     height: auto;
-    padding: $defaultPadding;
+    padding: $defaultSpace;
+}
+
+.card {
+    border-radius: 0.4rem;
+    border-color: #5a6969;
+    border-style: solid;
+    width: 21rem;
+    margin: $defaultSpace;
+    background-color: #2d3a3b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.gameLayout {
+    display: flex;
+    justify-content: center;
 }

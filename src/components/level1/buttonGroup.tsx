@@ -6,7 +6,7 @@ const ButtonGroup = ({ buttons }: ButtonGroupProps) => {
     <div>
       {buttons.map((buttonData) => {
         return (
-          <div className="buttonSpacer">
+          <div className="buttonSpacer" key={buttonData.text}>
             <Button text={buttonData.text} onClick={buttonData.onClick} />
           </div>
         );
