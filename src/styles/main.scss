@@ -1,59 +1,71 @@
 $black: #000000;
-$defaultSpace: 0.5rem;
+$white: #ffffff;
+$space0_5: 0.5rem;
+$space20: 20rem;
+
+.cardHeadline {
+  display: flex;
+  justify-content: space-between;
+  width: 19rem;
+  color: $white;
+  padding-top: $space0_5;
+  font-size: 1rem;
+}
 
 button {
-    justify-content: left;
-    outline: none;
-    width: 20rem;
-    text-align: center;
-    font-weight: 400;
-    font-style: normal;
-    line-height: normal;
-    display: inline-flex;
-    cursor: pointer;
-    padding: $defaultSpace;
-    font-size: 1rem;
-    color: #ffffff;
-    background-color: #303030;
-    border-radius: 0.2rem;
-    border-color: #2acbe0;
+  justify-content: left;
+  outline: none;
+  width: $space20;
+  text-align: center;
+  line-height: normal;
+  display: inline-flex;
+  cursor: pointer;
+  padding: $space0_5;
+  font-size: 1rem;
+  color: $white;
+  background-color: #303030;
+  border-radius: 0.2rem;
+  border-color: #2acbe0;
 }
 
 button:hover {
-    background-color: #24afc2;
-    color: $black;
+  background-color: #24afc2;
+  color: $black;
 }
 
 body {
-    background-color: $black;
-    height: '100vh';
-    min-height: '100vh';
+  background-color: $black;
+  height: "100vh";
+  min-height: "100vh";
+  font-weight: 400;
+  font-style: normal;
+  font-family: "Ubuntu";
 }
 
 .buttonSpacer {
-    padding: $defaultSpace;
+  padding: $space0_5;
 }
 
 .image {
-    width: 20rem;
-    height: auto;
-    padding: $defaultSpace;
+  width: $space20;
+  height: auto;
+  padding: $space0_5;
 }
 
 .card {
-    border-radius: 0.4rem;
-    border-color: #5a6969;
-    border-style: solid;
-    width: 21rem;
-    margin: $defaultSpace;
-    background-color: #2d3a3b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  border-radius: 0.4rem;
+  border-color: #5a6969;
+  border-style: solid;
+  width: 21rem;
+  margin: $space0_5;
+  background-color: #2d3a3b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .gameLayout {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
