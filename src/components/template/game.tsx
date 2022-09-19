@@ -14,14 +14,16 @@ function fillDeck(data: Array<CarData>, deckSize: number): Array<CarData> {
 const Game = () => {
   const [playerCards, setPlayerCards] = React.useState<Array<CarData>>([]);
   const [opponentCards, setOpponentCards] = React.useState<Array<CarData>>([]);
+  const [templateReady, setTemplateReady] = React.useState<Boolean>(false);
 
   function newGame(): void {
     async function fetchCarIDs() {
       const res = await fetch("http://localhost:3000/cars");
       const data: Array<CarData> = await res.json();
-      const deckSize = Math.floor(data.length / 2);
+      const deckSize: number = Math.floor(data.length / 2);
       setPlayerCards(fillDeck(data, deckSize));
       setOpponentCards(fillDeck(data, deckSize));
+      setTemplateReady(true);
     }
     fetchCarIDs();
   }
@@ -31,10 +33,14 @@ const Game = () => {
   }, []);
 
   return (
-    <div className="gameLayout">
-      <Card deck={playerCards} />
-      <Card deck={opponentCards} />
-    </div>
+    <>
+      {templateReady && (
+        <div className="gameLayout">
+          <Card deck={playerCards} />
+          <Card deck={opponentCards} />
+        </div>
+      )}
+    </>
   );
 };
 
