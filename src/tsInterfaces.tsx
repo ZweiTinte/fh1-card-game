@@ -1,9 +1,23 @@
+interface CarData {
+  id: number;
+  year: number;
+  brand: string;
+  model: string;
+  topspeed: number;
+  power: number;
+  acceleration: number;
+  weight: number;
+  cylinder: number;
+  torgue: number;
+  img: string;
+}
+
 interface TextProps {
   text: string;
 }
 
 interface CardProps {
-  deckSize: number;
+  deck: Array<CarData>;
 }
 
 interface ButtonProps extends TextProps {
@@ -23,18 +37,4 @@ interface DataList extends Array<ButtonProps> {}
 
 interface ButtonGroupProps {
   buttons: DataList;
-}
-
-interface CarData {
-  id: number;
-  year: number;
-  brand: string;
-  model: string;
-  topspeed: number;
-  power: number;
-  acceleration: number;
-  weight: number;
-  cylinder: number;
-  torgue: number;
-  img: string;
 }
