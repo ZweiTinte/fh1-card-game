@@ -1,36 +1,13 @@
-$black: #000000;
-$white: #ffffff;
-$space0_5: 0.5rem;
-$space20: 20rem;
+@import "variables";
 
 .cardHeadline {
   display: flex;
   justify-content: space-between;
   width: 19rem;
+  height: 2.5rem;
   color: $white;
-  padding-top: $space0_5;
+  padding-top: 0.5rem;
   font-size: 1rem;
-}
-
-button {
-  justify-content: left;
-  outline: none;
-  width: $space20;
-  text-align: center;
-  line-height: normal;
-  display: inline-flex;
-  cursor: pointer;
-  padding: $space0_5;
-  font-size: 1rem;
-  color: $white;
-  background-color: #303030;
-  border-radius: 0.2rem;
-  border-color: #2acbe0;
-}
-
-button:hover {
-  background-color: #24afc2;
-  color: $black;
 }
 
 body {
@@ -43,22 +20,22 @@ body {
 }
 
 .buttonSpacer {
-  padding: $space0_5;
+  padding: 0.5rem;
 }
 
 .image {
-  width: $space20;
+  width: 20rem;
   height: auto;
-  padding: $space0_5;
+  padding: 0.5rem;
 }
 
 .card {
   border-radius: 0.4rem;
-  border-color: #5a6969;
+  border-color: $cardBorder;
   border-style: solid;
   width: 21rem;
-  margin: $space0_5;
-  background-color: #2d3a3b;
+  margin: 0.5rem;
+  background-color: $cardBackground;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -9,6 +9,7 @@ const ButtonGroup = ({ buttons, disabled }: ButtonGroupProps) => {
           <div className="buttonSpacer" key={buttonData.text}>
             <Button
               text={buttonData.text}
+              color={buttonData.color}
               onClick={disabled ? () => {} : buttonData.onClick}
             />
           </div>

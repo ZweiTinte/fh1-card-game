@@ -1,9 +1,12 @@
 import * as React from "react";
+import { EMPTY } from "../../consts";
 
-const Button = ({ text, onClick }: ButtonProps) => {
+const Button = ({ text, color, onClick }: ButtonProps) => {
   return (
     <div>
-      <button onClick={onClick}>{text}</button>
+      <button onClick={onClick} className={color}>
+        {text}
+      </button>
     </div>
   );
 };

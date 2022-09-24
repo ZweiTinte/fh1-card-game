@@ -19,11 +19,13 @@ interface TextProps {
 interface CardProps {
   deck: Array<CarData>;
   hidden: Boolean;
-  opponentCard: Boolean;
-  showResults: (params: Boolean) => void;
+  disabled: Boolean;
+  compareFields: (params: string) => void;
+  highlight: Array<string>;
 }
 
 interface ButtonProps extends TextProps {
+  color: string;
   onClick: (params: any) => any;
 }
 

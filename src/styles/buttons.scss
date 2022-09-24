@@ -1,0 +1,70 @@
+@use "sass:math";
+@import "variables";
+
+button {
+  justify-content: left;
+  outline: none;
+  width: 20rem;
+  text-align: center;
+  line-height: normal;
+  display: inline-flex;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: $white;
+  background-color: #303030;
+  border-radius: 0.2rem;
+  border-color: #2acbe0;
+  border-style: solid;
+  &:hover {
+    background-color: #24afc2;
+    color: $black;
+  }
+}
+
+.nextButton {
+  justify-content: center;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  width: math.div(20rem, 2);
+  &:hover {
+    background-color: #097e05;
+    border-color: #03550a;
+  }
+}
+
+@mixin winStateColors {
+  background-color: #097e05;
+  border-color: #03550a;
+}
+
+.winState {
+  @include winStateColors;
+  &:hover {
+    @include winStateColors;
+  }
+}
+
+@mixin loseStateColors {
+  background-color: #b40505;
+  border-color: #570202;
+}
+
+.loseState {
+  @include loseStateColors;
+  &:hover {
+    @include loseStateColors;
+  }
+}
+
+@mixin equalStateColors {
+  background-color: #0e2c8f;
+  border-color: #025f69;
+}
+
+.equalState {
+  @include equalStateColors;
+  &:hover {
+    @include equalStateColors;
+  }
+}
