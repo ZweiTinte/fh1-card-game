@@ -74,15 +74,17 @@ const Game = () => {
               highlight={opColor}
             />
           </div>
-          <div className="gameLayout">
-            <Button
-              text={"Next"}
-              color={"nextButton"}
-              onClick={() => {
-                window.location.reload();
-              }}
-            />
-          </div>
+          {showResults && (
+            <div className="gameLayout">
+              <Button
+                text={"Next"}
+                color={"nextButton"}
+                onClick={() => {
+                  window.location.reload();
+                }}
+              />
+            </div>
+          )}
         </div>
       )}
     </>
