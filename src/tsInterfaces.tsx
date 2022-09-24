@@ -18,6 +18,9 @@ interface TextProps {
 
 interface CardProps {
   deck: Array<CarData>;
+  hidden: Boolean;
+  opponentCard: Boolean;
+  showResults: (params: Boolean) => void;
 }
 
 interface ButtonProps extends TextProps {
@@ -37,4 +40,5 @@ interface DataList extends Array<ButtonProps> {}
 
 interface ButtonGroupProps {
   buttons: DataList;
+  disabled: Boolean;
 }

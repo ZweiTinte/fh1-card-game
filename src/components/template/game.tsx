@@ -15,6 +15,7 @@ const Game = () => {
   const [playerCards, setPlayerCards] = React.useState<Array<CarData>>([]);
   const [opponentCards, setOpponentCards] = React.useState<Array<CarData>>([]);
   const [templateReady, setTemplateReady] = React.useState<Boolean>(false);
+  const [showResults, setShowResults] = React.useState<Boolean>(false);
 
   function newGame(): void {
     async function fetchCarIDs() {
@@ -36,8 +37,18 @@ const Game = () => {
     <>
       {templateReady && (
         <div className="gameLayout">
-          <Card deck={playerCards} />
-          <Card deck={opponentCards} />
+          <Card
+            deck={playerCards}
+            hidden={false}
+            opponentCard={false}
+            showResults={setShowResults}
+          />
+          <Card
+            deck={opponentCards}
+            hidden={!showResults}
+            opponentCard
+            showResults={setShowResults}
+          />
         </div>
       )}
     </>
