@@ -680,7 +680,7 @@
       "id": 53,
       "year": 1962,
       "brand": "Ferrari",
-      "model": "250_GTO",
+      "model": "250 GTO",
       "topspeed": 280,
       "power": 224,
       "acceleration": 6.0,
@@ -1927,7 +1927,7 @@
     {
       "id": 149,
       "year": 1965,
-      "brand": "MINI",
+      "brand": "Mini",
       "model": "Cooper S",
       "topspeed": 159,
       "power": 56,
@@ -1940,7 +1940,7 @@
     {
       "id": 150,
       "year": 2011,
-      "brand": "MINI",
+      "brand": "Mini",
       "model": "Cooper S",
       "topspeed": 240,
       "power": 135,
