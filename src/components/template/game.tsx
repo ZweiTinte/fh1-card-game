@@ -2,11 +2,13 @@ import * as React from "react";
 import { ACCELERATION, EMPTY, EQUAL, LOSE, WEIGHT, WIN } from "../../consts";
 import { fillDeck } from "../../gameHelpers";
 import Button from "../atoms/button";
+import InfoList from "../level1/infoList";
 import Card from "../level2/card";
 
 const Game = () => {
   const [playerCards, setPlayerCards] = React.useState<Array<CarData>>([]);
   const [opponentCards, setOpponentCards] = React.useState<Array<CarData>>([]);
+  const [bonus, setBonus] = React.useState<Array<CarData>>([]);
   const [templateReady, setTemplateReady] = React.useState<Boolean>(false);
   const [showResults, setShowResults] = React.useState<Boolean>(false);
   const [plColor, setPlColor] = React.useState<Array<string>>([EMPTY, EMPTY]);
@@ -50,6 +52,35 @@ const Game = () => {
     setShowResults(true);
   }
 
+  function next(): void {
+    if (plColor[1] === WIN) {
+      const newPlayerCards = playerCards
+        .concat(playerCards.splice(0, 1))
+        .concat(opponentCards.slice(0, 1))
+        .concat(bonus);
+      setBonus([]);
+      setPlayerCards(newPlayerCards);
+      setOpponentCards(opponentCards.slice(1, opponentCards.length));
+    } else if (plColor[1] === LOSE) {
+      const newOpponentCards = opponentCards
+        .concat(opponentCards.splice(0, 1))
+        .concat(playerCards.slice(0, 1))
+        .concat(bonus);
+      setBonus([]);
+      setOpponentCards(newOpponentCards);
+      setPlayerCards(playerCards.slice(1, playerCards.length));
+    } else {
+      setBonus(
+        bonus.concat(opponentCards.slice(0, 1)).concat(playerCards.slice(0, 1))
+      );
+      setPlayerCards(playerCards.slice(1, playerCards.length));
+      setOpponentCards(opponentCards.slice(1, opponentCards.length));
+    }
+    setShowResults(false);
+    setPlColor([EMPTY, EMPTY]);
+    setOpColor([EMPTY, EMPTY]);
+  }
+
   React.useEffect(() => {
     newGame();
   }, []);
@@ -74,17 +105,21 @@ const Game = () => {
               highlight={opColor}
             />
           </div>
-          {showResults && (
-            <div className="gameLayout">
+          <div className="gameLayout">
+            {showResults ? (
               <Button
                 text={"Next"}
                 color={"nextButton"}
-                onClick={() => {
-                  window.location.reload();
-                }}
+                onClick={() => next()}
               />
-            </div>
-          )}
+            ) : (
+              <>
+                {bonus.length > 0 && (
+                  <InfoList text="Bonus Cards" list={bonus} />
+                )}
+              </>
+            )}
+          </div>
         </div>
       )}
     </>

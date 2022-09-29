@@ -26,11 +26,16 @@ interface CardProps {
 
 interface ButtonProps extends TextProps {
   color: string;
-  onClick: (params: any) => any;
+  onClick: (params: any) => void;
+}
+
+interface InfoListProps extends TextProps {
+  list: Array<CarData>;
 }
 
 interface CardHeadlineProps extends TextProps {
   deckSize: number;
+  infobox?: boolean;
 }
 
 interface ImageProps {

@@ -66,9 +66,11 @@ const Card = ({
     setCurrentCard(car);
     setImage(`/images/cars/${car.brand.replace(" ", "")}/${car.img}`);
     setCardData(cardData);
-    setCardName(`${car.brand} ${car.model}`);
+    setCardName(`${car.year} ${car.brand} ${car.model}`);
     setTemplateReady(true);
   }, [hidden, highlight]);
+
+  // console.log(deck);
 
   return (
     <div>

@@ -1,13 +1,33 @@
 @import "variables";
 
-.cardHeadline {
+@mixin headline {
   display: flex;
   justify-content: space-between;
   width: 19rem;
-  height: 2.5rem;
   color: $white;
   padding-top: 0.5rem;
   font-size: 1rem;
+}
+
+.cardHeadline {
+  @include headline;
+  height: 2.5rem;
+}
+
+.infoboxHeadline {
+  @include headline;
+  height: 1.5rem;
+  border-bottom: 0.15rem solid $cardBorder;
+  margin-bottom: 0.5rem;
+}
+
+.listItem {
+  text-align: left;
+  font-size: 1rem;
+  color: $white;
+  justify-content: left;
+  width: 19rem;
+  padding: 0.25rem 0;
 }
 
 body {
