@@ -35,7 +35,7 @@ interface InfoListProps extends TextProps {
 
 interface CardHeadlineProps extends TextProps {
   deckSize: number;
-  infobox?: boolean;
+  style?: string;
 }
 
 interface ImageProps {
@@ -43,9 +43,23 @@ interface ImageProps {
   alt: string;
 }
 
-interface DataList extends Array<ButtonProps> {}
-
 interface ButtonGroupProps {
-  buttons: DataList;
+  buttons: Array<ButtonProps>;
   disabled: Boolean;
+}
+
+interface CardSectionProps {
+  playerCards: Array<CarData>;
+  showResults: Boolean;
+  plColor: Array<string>;
+  opColor: Array<string>;
+  opponentCards: Array<CarData>;
+  setWinLoss: (field: string, winLoss: string[]) => void;
+  setShowResults: React.Dispatch<React.SetStateAction<Boolean>>;
+}
+
+interface CardSubSectionProps {
+  showResults: Boolean;
+  bonus: Array<CarData>;
+  next: () => void;
 }

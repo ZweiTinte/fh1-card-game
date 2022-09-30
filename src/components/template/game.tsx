@@ -1,9 +1,10 @@
 import * as React from "react";
-import { ACCELERATION, EMPTY, EQUAL, LOSE, WEIGHT, WIN } from "../../consts";
+import { EMPTY, LOSE, WIN } from "../../consts";
 import { fillDeck } from "../../gameHelpers";
 import Button from "../atoms/button";
 import InfoList from "../level1/infoList";
-import Card from "../level2/card";
+import CardSubSection from "../level2/cardSubSection";
+import CardSection from "../level3/cardSection";
 
 const Game = () => {
   const [playerCards, setPlayerCards] = React.useState<Array<CarData>>([]);
@@ -31,43 +32,24 @@ const Game = () => {
     setOpColor([field, winLoss[1]]);
   }
 
-  function compareFields(field: string): void {
-    if ((playerCards[0] as any)[field] > (opponentCards[0] as any)[field]) {
-      if (field !== WEIGHT && field !== ACCELERATION) {
-        setWinLoss(field, [WIN, LOSE]);
-      } else {
-        setWinLoss(field, [LOSE, WIN]);
-      }
-    } else if (
-      (playerCards[0] as any)[field] < (opponentCards[0] as any)[field]
-    ) {
-      if (field !== WEIGHT && field !== ACCELERATION) {
-        setWinLoss(field, [LOSE, WIN]);
-      } else {
-        setWinLoss(field, [WIN, LOSE]);
-      }
-    } else {
-      setWinLoss(field, [EQUAL, EQUAL]);
-    }
-    setShowResults(true);
+  function getNewCards(
+    pl1Cards: Array<CarData>,
+    pl2Cards: Array<CarData>
+  ): Array<CarData> {
+    return pl1Cards
+      .concat(pl1Cards.splice(0, 1))
+      .concat(pl2Cards.slice(0, 1))
+      .concat(bonus);
   }
 
   function next(): void {
     if (plColor[1] === WIN) {
-      const newPlayerCards = playerCards
-        .concat(playerCards.splice(0, 1))
-        .concat(opponentCards.slice(0, 1))
-        .concat(bonus);
       setBonus([]);
-      setPlayerCards(newPlayerCards);
+      setPlayerCards(getNewCards(playerCards, opponentCards));
       setOpponentCards(opponentCards.slice(1, opponentCards.length));
     } else if (plColor[1] === LOSE) {
-      const newOpponentCards = opponentCards
-        .concat(opponentCards.splice(0, 1))
-        .concat(playerCards.slice(0, 1))
-        .concat(bonus);
       setBonus([]);
-      setOpponentCards(newOpponentCards);
+      setOpponentCards(getNewCards(opponentCards, playerCards));
       setPlayerCards(playerCards.slice(1, playerCards.length));
     } else {
       setBonus(
@@ -89,37 +71,16 @@ const Game = () => {
     <>
       {templateReady && (
         <div>
-          <div className="gameLayout">
-            <Card
-              deck={playerCards}
-              hidden={false}
-              disabled={showResults}
-              compareFields={compareFields}
-              highlight={plColor}
-            />
-            <Card
-              deck={opponentCards}
-              hidden={!showResults}
-              disabled
-              compareFields={compareFields}
-              highlight={opColor}
-            />
-          </div>
-          <div className="gameLayout">
-            {showResults ? (
-              <Button
-                text={"Next"}
-                color={"nextButton"}
-                onClick={() => next()}
-              />
-            ) : (
-              <>
-                {bonus.length > 0 && (
-                  <InfoList text="Bonus Cards" list={bonus} />
-                )}
-              </>
-            )}
-          </div>
+          <CardSection
+            playerCards={playerCards}
+            showResults={showResults}
+            plColor={plColor}
+            opColor={opColor}
+            opponentCards={opponentCards}
+            setWinLoss={setWinLoss}
+            setShowResults={setShowResults}
+          />
+          <CardSubSection showResults={showResults} bonus={bonus} next={next} />
         </div>
       )}
     </>

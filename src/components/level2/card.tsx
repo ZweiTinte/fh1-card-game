@@ -14,12 +14,12 @@ const Card = ({
   const [currentCard, setCurrentCard] = React.useState({ img: "" });
   const [image, setImage] = React.useState<string>("");
   const [templateReady, setTemplateReady] = React.useState<Boolean>(false);
-  const [cardData, setCardData] = React.useState<DataList>([]);
+  const [cardData, setCardData] = React.useState<Array<ButtonProps>>([]);
   const [cardName, setCardName] = React.useState<string>("");
 
   React.useEffect(() => {
     const car: CarData = deck[0];
-    const cardData: DataList = [
+    const cardData: Array<ButtonProps> = [
       {
         text: `Top Speed: ${hidden ? Const.QUESTIONMARK : car.topspeed}km/h`,
         color: highlight[0] === Const.TOPSPEED ? highlight[1] : Const.EMPTY,
@@ -69,8 +69,6 @@ const Card = ({
     setCardName(`${car.year} ${car.brand} ${car.model}`);
     setTemplateReady(true);
   }, [hidden, highlight]);
-
-  // console.log(deck);
 
   return (
     <div>

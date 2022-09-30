@@ -1,8 +1,8 @@
 import * as React from "react";
 
-const CardHeadline = ({ text, deckSize, infobox }: CardHeadlineProps) => {
+const CardHeadline = ({ text, deckSize, style }: CardHeadlineProps) => {
   return (
-    <div className={infobox ? "infoboxHeadline" : "cardHeadline"}>
+    <div className={style || "cardHeadline"}>
       <div>{text}</div>
       <div>{deckSize || ""}</div>
     </div>

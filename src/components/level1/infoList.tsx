@@ -5,7 +5,11 @@ import ListItem from "../atoms/listItem";
 const InfoList = ({ text, list }: InfoListProps) => {
   return (
     <div className="card">
-      <CardHeadline text={text} deckSize={list.length} infobox />
+      <CardHeadline
+        text={text}
+        deckSize={list.length}
+        style="infoboxHeadline"
+      />
       {list.map((listItem) => {
         return (
           <div key={listItem.id}>
