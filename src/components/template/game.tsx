@@ -44,13 +44,13 @@ const Game = () => {
 
   function next(): void {
     if (plColor[1] === WIN) {
-      setBonus([]);
       setPlayerCards(getNewCards(playerCards, opponentCards));
       setOpponentCards(opponentCards.slice(1, opponentCards.length));
-    } else if (plColor[1] === LOSE) {
       setBonus([]);
+    } else if (plColor[1] === LOSE) {
       setOpponentCards(getNewCards(opponentCards, playerCards));
       setPlayerCards(playerCards.slice(1, playerCards.length));
+      setBonus([]);
     } else {
       setBonus(
         bonus.concat(opponentCards.slice(0, 1)).concat(playerCards.slice(0, 1))
