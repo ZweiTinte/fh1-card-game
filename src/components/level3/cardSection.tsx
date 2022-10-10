@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ACCELERATION, EQUAL, LOSE, WEIGHT, WIN } from "../../consts";
+import { ACCELERATION, EQUAL, FIELDS, LOSE, WEIGHT, WIN } from "../../consts";
 import Card from "../level2/card";
 
 const CardSection = ({
@@ -10,6 +10,7 @@ const CardSection = ({
   opponentCards,
   setWinLoss,
   setShowResults,
+  playerTurn,
 }: CardSectionProps) => {
   function compareFields(field: string): void {
     if ((playerCards[0] as any)[field] > (opponentCards[0] as any)[field]) {
@@ -32,12 +33,19 @@ const CardSection = ({
     setShowResults(true);
   }
 
+  React.useEffect(() => {
+    if (!playerTurn && !showResults) {
+      compareFields(FIELDS[Math.floor(Math.random() * 6)]);
+      setShowResults(true);
+    }
+  }, [playerTurn, showResults]);
+
   return (
     <div className="gameLayout">
       <Card
         deck={playerCards}
         hidden={false}
-        disabled={showResults}
+        disabled={showResults || !playerTurn}
         compareFields={compareFields}
         highlight={plColor}
       />

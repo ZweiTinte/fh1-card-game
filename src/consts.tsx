@@ -10,3 +10,11 @@ export const EMPTY: string = "";
 export const WIN: string = "winState";
 export const LOSE: string = "loseState";
 export const EQUAL: string = "equalState";
+export const FIELDS: Array<string> = [
+  TOPSPEED,
+  POWER,
+  ACCELERATION,
+  WEIGHT,
+  CYLINDER,
+  TORGUE,
+];

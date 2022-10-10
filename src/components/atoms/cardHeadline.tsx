@@ -4,7 +4,7 @@ const CardHeadline = ({ text, deckSize, style }: CardHeadlineProps) => {
   return (
     <div className={style || "cardHeadline"}>
       <div>{text}</div>
-      <div>{deckSize || ""}</div>
+      {deckSize && <div>{deckSize}</div>}
     </div>
   );
 };

@@ -68,7 +68,7 @@ const Card = ({
     setCardData(cardData);
     setCardName(`${car.year} ${car.brand} ${car.model}`);
     setTemplateReady(true);
-  }, [hidden, highlight]);
+  }, [hidden, highlight, deck]);
 
   return (
     <div>

@@ -34,7 +34,7 @@ interface InfoListProps extends TextProps {
 }
 
 interface CardHeadlineProps extends TextProps {
-  deckSize: number;
+  deckSize?: number;
   style?: string;
 }
 
@@ -51,6 +51,7 @@ interface ButtonGroupProps {
 interface CardSectionProps {
   playerCards: Array<CarData>;
   showResults: Boolean;
+  playerTurn: Boolean;
   plColor: Array<string>;
   opColor: Array<string>;
   opponentCards: Array<CarData>;
@@ -60,6 +61,7 @@ interface CardSectionProps {
 
 interface CardSubSectionProps {
   showResults: Boolean;
+  playerTurn: Boolean;
   bonus: Array<CarData>;
   next: () => void;
 }
