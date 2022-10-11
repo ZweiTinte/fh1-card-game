@@ -22,8 +22,8 @@ const Game = () => {
       const deckSize: number = Math.floor(data.length / 2);
       setPlayerCards(fillDeck(data, deckSize));
       setOpponentCards(fillDeck(data, deckSize));
-      setTemplateReady(true);
       setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
+      setTemplateReady(true);
     }
     fetchCarIDs();
   }
