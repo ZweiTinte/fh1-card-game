@@ -1,7 +1,7 @@
 import * as React from "react";
 import { EMPTY, LOSE, WIN } from "../../consts";
-import { fillDeck } from "../../gameHelpers";
-import CardHeadline from "../atoms/cardHeadline";
+import { fillDeck, getNewCards } from "../../gameHelpers";
+import Headline from "../atoms/headline";
 import CardSubSection from "../level2/cardSubSection";
 import CardSection from "../level3/cardSection";
 
@@ -33,24 +33,14 @@ const Game = () => {
     setOpColor([field, winLoss[1]]);
   }
 
-  function getNewCards(
-    pl1Cards: Array<CarData>,
-    pl2Cards: Array<CarData>
-  ): Array<CarData> {
-    return pl1Cards
-      .concat(pl1Cards.splice(0, 1))
-      .concat(pl2Cards.slice(0, 1))
-      .concat(bonus);
-  }
-
   function next(): void {
     if (plColor[1] === WIN) {
-      setPlayerCards(getNewCards(playerCards, opponentCards));
+      setPlayerCards(getNewCards(playerCards, opponentCards, bonus));
       setOpponentCards(opponentCards.slice(1, opponentCards.length));
       setBonus([]);
       setPlayerTurn(true);
     } else if (plColor[1] === LOSE) {
-      setOpponentCards(getNewCards(opponentCards, playerCards));
+      setOpponentCards(getNewCards(opponentCards, playerCards, bonus));
       setPlayerCards(playerCards.slice(1, playerCards.length));
       setBonus([]);
       setPlayerTurn(false);
@@ -75,7 +65,7 @@ const Game = () => {
       {templateReady && (
         <>
           <div className="gameLayout">
-            <CardHeadline
+            <Headline
               text={playerTurn ? "Your Turn!" : "Opponent Turn!"}
               style={playerTurn ? "playerHeadline" : "opponentHeadline"}
             />

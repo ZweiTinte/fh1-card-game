@@ -33,7 +33,7 @@ interface InfoListProps extends TextProps {
   list: Array<CarData>;
 }
 
-interface CardHeadlineProps extends TextProps {
+interface HeadlineProps extends TextProps {
   deckSize?: number;
   style?: string;
 }

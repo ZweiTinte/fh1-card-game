@@ -1,7 +1,7 @@
 import * as React from "react";
 import Image from "../atoms/image";
 import ButtonGroup from "../level1/buttonGroup";
-import CardHeadline from "../atoms/cardHeadline";
+import Headline from "../atoms/headline";
 import * as Const from "../../consts";
 
 const Card = ({
@@ -74,7 +74,7 @@ const Card = ({
     <div>
       {templateReady && (
         <div className="card">
-          <CardHeadline
+          <Headline
             text={hidden ? Const.QUESTIONMARK : cardName}
             deckSize={deck.length}
           />

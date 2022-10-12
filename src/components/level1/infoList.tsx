@@ -1,15 +1,11 @@
 import * as React from "react";
-import CardHeadline from "../atoms/cardHeadline";
+import Headline from "../atoms/headline";
 import ListItem from "../atoms/listItem";
 
 const InfoList = ({ text, list }: InfoListProps) => {
   return (
     <div className="card">
-      <CardHeadline
-        text={text}
-        deckSize={list.length}
-        style="infoboxHeadline"
-      />
+      <Headline text={text} deckSize={list.length} style="infoboxHeadline" />
       {list.map((listItem) => {
         return (
           <div key={listItem.id}>

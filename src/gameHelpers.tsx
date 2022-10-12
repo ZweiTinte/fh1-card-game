@@ -10,3 +10,14 @@ export function fillDeck(
   }
   return deck;
 }
+
+export function getNewCards(
+  pl1Cards: Array<CarData>,
+  pl2Cards: Array<CarData>,
+  bonus: Array<CarData>
+): Array<CarData> {
+  return pl1Cards
+    .concat(pl1Cards.splice(0, 1))
+    .concat(pl2Cards.slice(0, 1))
+    .concat(bonus);
+}

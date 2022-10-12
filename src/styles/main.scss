@@ -8,24 +8,25 @@
   font-size: 1rem;
 }
 
-.cardHeadline {
+.headline {
   @include headline;
   height: 2.5rem;
   width: 19rem;
 }
 
-.playerHeadline {
+@mixin turnHeadline {
   @include headline;
   height: 1.5rem;
   width: 43rem;
   font-weight: bold;
 }
 
+.playerHeadline {
+  @include turnHeadline;
+}
+
 .opponentHeadline {
-  @include headline;
-  height: 1.5rem;
-  width: 43rem;
-  font-weight: bold;
+  @include turnHeadline;
   justify-content: right;
 }
 
