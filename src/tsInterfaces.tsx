@@ -16,10 +16,15 @@ interface TextProps {
   text: string;
 }
 
+interface WinMessageProps {
+  style: string;
+  result: number;
+}
+
 interface CardProps {
   deck: Array<CarData>;
-  hidden: Boolean;
-  disabled: Boolean;
+  hidden: boolean;
+  disabled: boolean;
   compareFields: (params: string) => void;
   highlight: Array<string>;
 }
@@ -45,23 +50,25 @@ interface ImageProps {
 
 interface ButtonGroupProps {
   buttons: Array<ButtonProps>;
-  disabled: Boolean;
+  disabled: boolean;
 }
 
 interface CardSectionProps {
   playerCards: Array<CarData>;
-  showResults: Boolean;
-  playerTurn: Boolean;
+  showResults: boolean;
+  playerTurn: boolean;
+  gameEnded: boolean;
   plColor: Array<string>;
   opColor: Array<string>;
   opponentCards: Array<CarData>;
   setWinLoss: (field: string, winLoss: string[]) => void;
-  setShowResults: React.Dispatch<React.SetStateAction<Boolean>>;
+  setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
+  setGameEnded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface CardSubSectionProps {
-  showResults: Boolean;
-  playerTurn: Boolean;
+  showResults: boolean;
+  playerTurn: boolean;
   bonus: Array<CarData>;
   next: () => void;
 }

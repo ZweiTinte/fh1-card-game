@@ -9,17 +9,18 @@ const Game = () => {
   const [playerCards, setPlayerCards] = React.useState<Array<CarData>>([]);
   const [opponentCards, setOpponentCards] = React.useState<Array<CarData>>([]);
   const [bonus, setBonus] = React.useState<Array<CarData>>([]);
-  const [templateReady, setTemplateReady] = React.useState<Boolean>(false);
-  const [showResults, setShowResults] = React.useState<Boolean>(false);
+  const [templateReady, setTemplateReady] = React.useState<boolean>(false);
+  const [showResults, setShowResults] = React.useState<boolean>(false);
   const [plColor, setPlColor] = React.useState<Array<string>>([EMPTY, EMPTY]);
   const [opColor, setOpColor] = React.useState<Array<string>>([EMPTY, EMPTY]);
-  const [playerTurn, setPlayerTurn] = React.useState<Boolean>(true);
+  const [playerTurn, setPlayerTurn] = React.useState<boolean>(true);
+  const [gameEnded, setGameEnded] = React.useState<boolean>(false);
 
   function newGame(): void {
     async function fetchCarIDs() {
       const res = await fetch("http://localhost:3000/cars");
       const data: Array<CarData> = await res.json();
-      const deckSize: number = Math.floor(data.length / 2);
+      const deckSize: number = 10;
       setPlayerCards(fillDeck(data, deckSize));
       setOpponentCards(fillDeck(data, deckSize));
       setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
@@ -64,12 +65,14 @@ const Game = () => {
     <>
       {templateReady && (
         <>
-          <div className="gameLayout">
-            <Headline
-              text={playerTurn ? "Your Turn!" : "Opponent Turn!"}
-              style={playerTurn ? "playerHeadline" : "opponentHeadline"}
-            />
-          </div>
+          {!gameEnded && (
+            <div className="gameLayout">
+              <Headline
+                text={playerTurn ? "Your Turn!" : "Opponent Turn!"}
+                style={playerTurn ? "playerHeadline" : "opponentHeadline"}
+              />
+            </div>
+          )}
           <CardSection
             playerCards={playerCards}
             showResults={showResults}
@@ -79,13 +82,17 @@ const Game = () => {
             opponentCards={opponentCards}
             setWinLoss={setWinLoss}
             setShowResults={setShowResults}
+            gameEnded={gameEnded}
+            setGameEnded={setGameEnded}
           />
-          <CardSubSection
-            showResults={showResults}
-            playerTurn={playerTurn}
-            bonus={bonus}
-            next={next}
-          />
+          {!gameEnded && (
+            <CardSubSection
+              showResults={showResults}
+              playerTurn={playerTurn}
+              bonus={bonus}
+              next={next}
+            />
+          )}
         </>
       )}
     </>

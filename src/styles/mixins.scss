@@ -1,0 +1,39 @@
+@import "variables";
+
+@mixin headline {
+  display: flex;
+  justify-content: space-between;
+  color: $white;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+}
+
+@mixin turnHeadline {
+  @include headline;
+  height: 1.5rem;
+  width: 43rem;
+  font-weight: bold;
+}
+
+@mixin cardObject {
+  width: 21rem;
+  margin: 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin winStateColors {
+  background-color: $green1;
+  border-color: $green2;
+}
+
+@mixin loseStateColors {
+  background-color: $red1;
+  border-color: $red2;
+}
+
+@mixin equalStateColors {
+  background-color: $blue1;
+  border-color: $blue2;
+}

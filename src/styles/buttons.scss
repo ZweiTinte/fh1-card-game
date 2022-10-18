@@ -1,5 +1,6 @@
 @use "sass:math";
 @import "variables";
+@import "mixins";
 
 button {
   justify-content: left;
@@ -12,12 +13,12 @@ button {
   padding: 0.5rem;
   font-size: 1rem;
   color: $white;
-  background-color: #303030;
+  background-color: $buttonBackground;
   border-radius: 0.2rem;
-  border-color: #2acbe0;
+  border-color: $blue3;
   border-style: solid;
   &:hover {
-    background-color: #24afc2;
+    background-color: $blue4;
     color: $black;
   }
 }
@@ -28,14 +29,9 @@ button {
   margin-top: 0.5rem;
   width: math.div(20rem, 2);
   &:hover {
-    background-color: #097e05;
-    border-color: #03550a;
+    background-color: $green1;
+    border-color: $green2;
   }
-}
-
-@mixin winStateColors {
-  background-color: #097e05;
-  border-color: #03550a;
 }
 
 .winState {
@@ -45,21 +41,11 @@ button {
   }
 }
 
-@mixin loseStateColors {
-  background-color: #b40505;
-  border-color: #570202;
-}
-
 .loseState {
   @include loseStateColors;
   &:hover {
     @include loseStateColors;
   }
-}
-
-@mixin equalStateColors {
-  background-color: #0e2c8f;
-  border-color: #025f69;
 }
 
 .equalState {

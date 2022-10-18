@@ -19,54 +19,60 @@ const Card = ({
 
   React.useEffect(() => {
     const car: CarData = deck[0];
-    const cardData: Array<ButtonProps> = [
-      {
-        text: `Top Speed: ${hidden ? Const.QUESTIONMARK : car.topspeed}km/h`,
-        color: highlight[0] === Const.TOPSPEED ? highlight[1] : Const.EMPTY,
-        onClick: () => {
-          compareFields(Const.TOPSPEED);
+    if (car !== undefined) {
+      const cardData: Array<ButtonProps> = [
+        {
+          text: `Top Speed: ${hidden ? Const.QUESTIONMARK : car.topspeed}km/h`,
+          color: highlight[0] === Const.TOPSPEED ? highlight[1] : Const.EMPTY,
+          onClick: () => {
+            compareFields(Const.TOPSPEED);
+          },
         },
-      },
-      {
-        text: `Power: ${hidden ? Const.QUESTIONMARK : car.power}hp`,
-        color: highlight[0] === Const.POWER ? highlight[1] : Const.EMPTY,
-        onClick: () => {
-          compareFields(Const.POWER);
+        {
+          text: `Power: ${hidden ? Const.QUESTIONMARK : car.power}hp`,
+          color: highlight[0] === Const.POWER ? highlight[1] : Const.EMPTY,
+          onClick: () => {
+            compareFields(Const.POWER);
+          },
         },
-      },
-      {
-        text: `0-100km/h: ${hidden ? Const.QUESTIONMARK : car.acceleration}sec`,
-        color: highlight[0] === Const.ACCELERATION ? highlight[1] : Const.EMPTY,
-        onClick: () => {
-          compareFields(Const.ACCELERATION);
+        {
+          text: `0-100km/h: ${
+            hidden ? Const.QUESTIONMARK : car.acceleration
+          }sec`,
+          color:
+            highlight[0] === Const.ACCELERATION ? highlight[1] : Const.EMPTY,
+          onClick: () => {
+            compareFields(Const.ACCELERATION);
+          },
         },
-      },
-      {
-        text: `Weight: ${hidden ? Const.QUESTIONMARK : car.weight}kg`,
-        color: highlight[0] === Const.WEIGHT ? highlight[1] : Const.EMPTY,
-        onClick: () => {
-          compareFields(Const.WEIGHT);
+        {
+          text: `Weight: ${hidden ? Const.QUESTIONMARK : car.weight}kg`,
+          color: highlight[0] === Const.WEIGHT ? highlight[1] : Const.EMPTY,
+          onClick: () => {
+            compareFields(Const.WEIGHT);
+          },
         },
-      },
-      {
-        text: `Cylinder: ${hidden ? Const.QUESTIONMARK : car.cylinder}`,
-        color: highlight[0] === Const.CYLINDER ? highlight[1] : Const.EMPTY,
-        onClick: () => {
-          compareFields(Const.CYLINDER);
+        {
+          text: `Cylinder: ${hidden ? Const.QUESTIONMARK : car.cylinder}`,
+          color: highlight[0] === Const.CYLINDER ? highlight[1] : Const.EMPTY,
+          onClick: () => {
+            compareFields(Const.CYLINDER);
+          },
         },
-      },
-      {
-        text: `Torgue: ${hidden ? Const.QUESTIONMARK : car.torgue}Nm`,
-        color: highlight[0] === Const.TORGUE ? highlight[1] : Const.EMPTY,
-        onClick: () => {
-          compareFields(Const.TORGUE);
+        {
+          text: `Torgue: ${hidden ? Const.QUESTIONMARK : car.torgue}Nm`,
+          color: highlight[0] === Const.TORGUE ? highlight[1] : Const.EMPTY,
+          onClick: () => {
+            compareFields(Const.TORGUE);
+          },
         },
-      },
-    ];
-    setCurrentCard(car);
-    setImage(`/images/cars/${car.brand.replace(" ", "")}/${car.img}`);
-    setCardData(cardData);
-    setCardName(`${car.year} ${car.brand} ${car.model}`);
+      ];
+
+      setCurrentCard(car);
+      setImage(`/images/cars/${car.brand.replace(" ", "")}/${car.img}`);
+      setCardData(cardData);
+      setCardName(`${car.year} ${car.brand} ${car.model}`);
+    }
     setTemplateReady(true);
   }, [hidden, highlight, deck]);
 

@@ -1,24 +1,10 @@
 @import "variables";
-
-@mixin headline {
-  display: flex;
-  justify-content: space-between;
-  color: $white;
-  padding-top: 0.5rem;
-  font-size: 1rem;
-}
+@import "mixins";
 
 .headline {
   @include headline;
   height: 2.5rem;
   width: 19rem;
-}
-
-@mixin turnHeadline {
-  @include headline;
-  height: 1.5rem;
-  width: 43rem;
-  font-weight: bold;
 }
 
 .playerHeadline {
@@ -67,19 +53,35 @@ body {
 }
 
 .card {
+  @include cardObject;
   border-radius: 0.4rem;
-  border-color: $cardBorder;
-  border-style: solid;
-  width: 21rem;
-  margin: 0.5rem 0.5rem 0.5rem;
+  border: 0.25rem solid $cardBorder;
   background-color: $cardBackground;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
 .gameLayout {
   display: flex;
   justify-content: center;
+}
+
+.winMessage {
+  @include cardObject;
+  height: 30rem;
+  font-size: 4rem;
+  color: $green1;
+}
+
+.loseMessage {
+  @include cardObject;
+  height: 30rem;
+  font-size: 4rem;
+  color: $red1;
+}
+
+.equalMessage {
+  @include cardObject;
+  height: 30rem;
+  font-size: 4rem;
+  color: $blue4;
 }
