@@ -1,7 +1,7 @@
 import * as React from "react";
 import { EMPTY, LOSE, WIN } from "../../consts";
 import { fillDeck, getNewCards } from "../../gameHelpers";
-import Headline from "../atoms/headline";
+import GameInfoSection from "../level1/gameInfoSection";
 import CardSubSection from "../level2/cardSubSection";
 import CardSection from "../level3/cardSection";
 
@@ -65,14 +65,7 @@ const Game = () => {
     <>
       {templateReady && (
         <>
-          {!gameEnded && (
-            <div className="gameLayout">
-              <Headline
-                text={playerTurn ? "Your Turn!" : "Opponent Turn!"}
-                style={playerTurn ? "playerHeadline" : "opponentHeadline"}
-              />
-            </div>
-          )}
+          {!gameEnded && <GameInfoSection playerTurn={playerTurn} />}
           <CardSection
             playerCards={playerCards}
             showResults={showResults}
