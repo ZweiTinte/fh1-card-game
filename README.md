@@ -4,7 +4,9 @@ FH1 Card Game
 
 Installation:
 
-- sudo npm install -g gatsby-cli
+- install node on linux: curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&sudo apt-get install -y nodejs
+- install json-server: sudo npm install -g json-server
+- install gatsby: sudo npm install -g gatsby-cli
 
 Run the App:
 
