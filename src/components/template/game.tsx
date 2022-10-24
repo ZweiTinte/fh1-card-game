@@ -21,6 +21,11 @@ const Game = () => {
       const res = await fetch("http://localhost:3000/cars");
       const data: Array<CarData> = await res.json();
       const deckSize: number = 10;
+      setBonus([]);
+      setShowResults(false);
+      setPlColor([EMPTY, EMPTY]);
+      setOpColor([EMPTY, EMPTY]);
+      setGameEnded(false);
       setPlayerCards(fillDeck(data, deckSize));
       setOpponentCards(fillDeck(data, deckSize));
       setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
@@ -78,14 +83,14 @@ const Game = () => {
             gameEnded={gameEnded}
             setGameEnded={setGameEnded}
           />
-          {!gameEnded && (
-            <CardSubSection
-              showResults={showResults}
-              playerTurn={playerTurn}
-              bonus={bonus}
-              next={next}
-            />
-          )}
+          <CardSubSection
+            showResults={showResults}
+            playerTurn={playerTurn}
+            bonus={bonus}
+            next={next}
+            gameEnded={gameEnded}
+            newGame={newGame}
+          />
         </>
       )}
     </>

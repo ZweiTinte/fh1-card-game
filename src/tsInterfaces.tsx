@@ -30,7 +30,7 @@ interface CardProps {
 }
 
 interface ButtonProps extends TextProps {
-  color: string;
+  color?: string;
   onClick: (params: any) => void;
 }
 
@@ -71,4 +71,6 @@ interface CardSubSectionProps {
   playerTurn: boolean;
   bonus: Array<CarData>;
   next: () => void;
+  gameEnded: boolean;
+  newGame: () => void;
 }

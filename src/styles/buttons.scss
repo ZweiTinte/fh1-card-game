@@ -34,6 +34,17 @@ button {
   }
 }
 
+.newGameButton {
+  justify-content: center;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  width: 20rem;
+  &:hover {
+    background-color: $blue4;
+    border-color: $black;
+  }
+}
+
 .winState {
   @include winStateColors;
   &:hover {

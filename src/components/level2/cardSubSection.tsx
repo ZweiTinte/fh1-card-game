@@ -7,14 +7,28 @@ const CardSubSection = ({
   playerTurn,
   bonus,
   next,
+  gameEnded,
+  newGame,
 }: CardSubSectionProps) => {
   return (
     <div className={"gameLayout"}>
-      {(!playerTurn || !showResults) && (
-        <>{bonus.length > 0 && <InfoList text="Bonus Cards" list={bonus} />}</>
-      )}
-      {showResults && (
-        <Button text={"Next"} color={"nextButton"} onClick={() => next()} />
+      {gameEnded ? (
+        <Button
+          text={"New Game"}
+          color={"newGameButton"}
+          onClick={() => newGame()}
+        />
+      ) : (
+        <>
+          {(!playerTurn || !showResults) && (
+            <>
+              {bonus.length > 0 && <InfoList text="Bonus Cards" list={bonus} />}
+            </>
+          )}
+          {showResults && (
+            <Button text={"Next"} color={"nextButton"} onClick={() => next()} />
+          )}
+        </>
       )}
     </div>
   );
