@@ -6,8 +6,8 @@ import CardSubSection from "../level2/cardSubSection";
 import CardSection from "../level3/cardSection";
 
 const Game = () => {
-  const [playerCards, setPlayerCards] = React.useState<Array<CarData>>([]);
-  const [opponentCards, setOpponentCards] = React.useState<Array<CarData>>([]);
+  const [plCards, setPlCards] = React.useState<Array<CarData>>([]);
+  const [opCards, setOpCards] = React.useState<Array<CarData>>([]);
   const [bonus, setBonus] = React.useState<Array<CarData>>([]);
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const [showResults, setShowResults] = React.useState<boolean>(false);
@@ -26,8 +26,8 @@ const Game = () => {
       setPlColor([EMPTY, EMPTY]);
       setOpColor([EMPTY, EMPTY]);
       setGameEnded(false);
-      setPlayerCards(fillDeck(data, deckSize));
-      setOpponentCards(fillDeck(data, deckSize));
+      setPlCards(fillDeck(data, deckSize));
+      setOpCards(fillDeck(data, deckSize));
       setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
       setTemplateReady(true);
     }
@@ -41,21 +41,19 @@ const Game = () => {
 
   function next(): void {
     if (plColor[1] === WIN) {
-      setPlayerCards(getNewCards(playerCards, opponentCards, bonus));
-      setOpponentCards(opponentCards.slice(1, opponentCards.length));
+      setPlCards(getNewCards(plCards, opCards, bonus));
+      setOpCards(opCards.slice(1, opCards.length));
       setBonus([]);
       setPlayerTurn(true);
     } else if (plColor[1] === LOSE) {
-      setOpponentCards(getNewCards(opponentCards, playerCards, bonus));
-      setPlayerCards(playerCards.slice(1, playerCards.length));
+      setOpCards(getNewCards(opCards, plCards, bonus));
+      setPlCards(plCards.slice(1, plCards.length));
       setBonus([]);
       setPlayerTurn(false);
     } else {
-      setBonus(
-        bonus.concat(opponentCards.slice(0, 1)).concat(playerCards.slice(0, 1))
-      );
-      setPlayerCards(playerCards.slice(1, playerCards.length));
-      setOpponentCards(opponentCards.slice(1, opponentCards.length));
+      setBonus(bonus.concat(opCards.slice(0, 1)).concat(plCards.slice(0, 1)));
+      setPlCards(plCards.slice(1, plCards.length));
+      setOpCards(opCards.slice(1, opCards.length));
     }
     setShowResults(false);
     setPlColor([EMPTY, EMPTY]);
@@ -72,12 +70,12 @@ const Game = () => {
         <>
           {!gameEnded && <GameInfoSection playerTurn={playerTurn} />}
           <CardSection
-            playerCards={playerCards}
+            playerCards={plCards}
             showResults={showResults}
             playerTurn={playerTurn}
             plColor={plColor}
             opColor={opColor}
-            opponentCards={opponentCards}
+            opponentCards={opCards}
             setWinLoss={setWinLoss}
             setShowResults={setShowResults}
             gameEnded={gameEnded}

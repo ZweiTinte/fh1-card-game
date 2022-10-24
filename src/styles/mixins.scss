@@ -37,3 +37,9 @@
   background-color: $blue1;
   border-color: $blue2;
 }
+
+@mixin bigButton {
+  justify-content: center;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}

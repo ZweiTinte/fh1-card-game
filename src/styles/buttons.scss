@@ -24,9 +24,7 @@ button {
 }
 
 .nextButton {
-  justify-content: center;
-  font-size: 2rem;
-  margin-top: 0.5rem;
+  @include bigButton;
   width: math.div(20rem, 2);
   &:hover {
     background-color: $green1;
@@ -35,9 +33,7 @@ button {
 }
 
 .newGameButton {
-  justify-content: center;
-  font-size: 2rem;
-  margin-top: 0.5rem;
+  @include bigButton;
   width: 20rem;
   &:hover {
     background-color: $blue4;
