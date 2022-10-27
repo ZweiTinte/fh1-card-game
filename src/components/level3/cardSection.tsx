@@ -20,14 +20,18 @@ const CardSection = ({
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
 
   function compareFields(field: string): void {
-    if ((playerCards[0] as any)[field] > (opponentCards[0] as any)[field]) {
+    if (
+      playerCards[0][field as keyof CarData] >
+      opponentCards[0][field as keyof CarData]
+    ) {
       if (field !== WEIGHT && field !== ACCELERATION) {
         setWinLoss(field, [WIN, LOSE]);
       } else {
         setWinLoss(field, [LOSE, WIN]);
       }
     } else if (
-      (playerCards[0] as any)[field] < (opponentCards[0] as any)[field]
+      playerCards[0][field as keyof CarData] <
+      opponentCards[0][field as keyof CarData]
     ) {
       if (field !== WEIGHT && field !== ACCELERATION) {
         setWinLoss(field, [LOSE, WIN]);

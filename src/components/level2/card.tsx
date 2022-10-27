@@ -77,7 +77,7 @@ const Card = ({
   }, [hidden, highlight, deck]);
 
   return (
-    <div>
+    <>
       {templateReady && (
         <div className="card">
           <Headline
@@ -91,7 +91,7 @@ const Card = ({
           <ButtonGroup buttons={cardData} disabled={disabled} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
