@@ -17,6 +17,7 @@ const Game = () => {
   const [gameEnded, setGameEnded] = React.useState<boolean>(false);
 
   function newGame(): void {
+    setTemplateReady(false);
     async function fetchCarIDs() {
       const res = await fetch("http://localhost:3000/cars");
       const data: Array<CarData> = await res.json();
