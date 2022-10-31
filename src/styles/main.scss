@@ -65,6 +65,13 @@ body {
   justify-content: center;
 }
 
+.colLayout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 .winMessage {
   @include cardObject;
   height: 30rem;
@@ -84,4 +91,15 @@ body {
   height: 30rem;
   font-size: 4rem;
   color: $blue4;
+}
+
+.errorMessage {
+  width: 80%;
+  margin: 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30rem;
+  font-size: 2rem;
+  color: $red1;
 }
