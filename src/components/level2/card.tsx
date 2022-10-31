@@ -19,6 +19,7 @@ const Card = ({
 
   React.useEffect(() => {
     const car: CarData = deck[0];
+    setTemplateReady(false);
     if (car !== undefined) {
       const cardData: Array<ButtonProps> = [
         {
@@ -67,7 +68,6 @@ const Card = ({
           },
         },
       ];
-
       setCurrentCard(car);
       setImage(`/images/cars/${car.brand.replace(" ", "")}/${car.img}`);
       setCardData(cardData);

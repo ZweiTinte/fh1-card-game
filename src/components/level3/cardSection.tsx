@@ -45,6 +45,7 @@ const CardSection = ({
   }
 
   React.useEffect(() => {
+    setTemplateReady(false);
     if (playerCards.length === 0) {
       setGameResultMessage("loseMessage");
       setGameResult(0);

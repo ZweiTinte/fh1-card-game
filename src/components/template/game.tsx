@@ -30,9 +30,9 @@ const Game = () => {
       setPlCards(fillDeck(data, deckSize));
       setOpCards(fillDeck(data, deckSize));
       setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
-      setTemplateReady(true);
     }
     fetchCarIDs();
+    setTemplateReady(true);
   }
 
   function setWinLoss(field: string, winLoss: Array<string>): void {
