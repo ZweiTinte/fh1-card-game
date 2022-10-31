@@ -1,14 +1,14 @@
 import * as React from "react";
-import { ACCELERATION, EQUAL, FIELDS, LOSE, WEIGHT, WIN } from "../../consts";
+import { EQUAL, FIELDS, LOSE, LOWER_FIELDS, WIN } from "../../consts";
 import WinMessage from "../atoms/winMessage";
 import Card from "../level2/card";
 
 const CardSection = ({
-  playerCards,
+  plCards,
   showResults,
   plColor,
   opColor,
-  opponentCards,
+  opCards,
   setWinLoss,
   setShowResults,
   playerTurn,
@@ -21,19 +21,17 @@ const CardSection = ({
 
   function compareFields(field: string): void {
     if (
-      playerCards[0][field as keyof CarData] >
-      opponentCards[0][field as keyof CarData]
+      plCards[0][field as keyof CarData] > opCards[0][field as keyof CarData]
     ) {
-      if (field !== WEIGHT && field !== ACCELERATION) {
+      if (!LOWER_FIELDS.includes(field)) {
         setWinLoss(field, [WIN, LOSE]);
       } else {
         setWinLoss(field, [LOSE, WIN]);
       }
     } else if (
-      playerCards[0][field as keyof CarData] <
-      opponentCards[0][field as keyof CarData]
+      plCards[0][field as keyof CarData] < opCards[0][field as keyof CarData]
     ) {
-      if (field !== WEIGHT && field !== ACCELERATION) {
+      if (!LOWER_FIELDS.includes(field)) {
         setWinLoss(field, [LOSE, WIN]);
       } else {
         setWinLoss(field, [WIN, LOSE]);
@@ -46,25 +44,25 @@ const CardSection = ({
 
   React.useEffect(() => {
     setTemplateReady(false);
-    if (playerCards.length === 0) {
+    if (plCards.length === 0) {
       setGameResultMessage("loseMessage");
       setGameResult(0);
-      if (opponentCards.length === 0) {
+      if (opCards.length === 0) {
         setGameResultMessage("equalMessage");
         setGameResult(2);
       }
-    } else if (opponentCards.length === 0) {
+    } else if (opCards.length === 0) {
       setGameResultMessage("winMessage");
       setGameResult(1);
     } else if (!playerTurn && !showResults) {
       compareFields(FIELDS[Math.floor(Math.random() * 6)]);
       setShowResults(true);
     }
-    if (playerCards.length === 0 || opponentCards.length === 0) {
+    if (plCards.length === 0 || opCards.length === 0) {
       setGameEnded(true);
     }
     setTemplateReady(true);
-  }, [playerTurn, showResults, playerCards, opponentCards]);
+  }, [playerTurn, showResults, plCards, opCards]);
 
   return (
     <>
@@ -75,14 +73,14 @@ const CardSection = ({
           ) : (
             <>
               <Card
-                deck={playerCards}
+                deck={plCards}
                 hidden={false}
                 disabled={showResults || !playerTurn}
                 compareFields={compareFields}
                 highlight={plColor}
               />
               <Card
-                deck={opponentCards}
+                deck={opCards}
                 hidden={!showResults}
                 disabled
                 compareFields={compareFields}

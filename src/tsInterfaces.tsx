@@ -54,13 +54,13 @@ interface ButtonGroupProps {
 }
 
 interface CardSectionProps {
-  playerCards: Array<CarData>;
+  plCards: Array<CarData>;
   showResults: boolean;
   playerTurn: boolean;
   gameEnded: boolean;
   plColor: Array<string>;
   opColor: Array<string>;
-  opponentCards: Array<CarData>;
+  opCards: Array<CarData>;
   setWinLoss: (field: string, winLoss: string[]) => void;
   setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
   setGameEnded: React.Dispatch<React.SetStateAction<boolean>>;

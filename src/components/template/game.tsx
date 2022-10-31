@@ -89,12 +89,12 @@ const Game = () => {
         <>
           {!gameEnded && <GameInfoSection playerTurn={playerTurn} />}
           <CardSection
-            playerCards={plCards}
+            plCards={plCards}
             showResults={showResults}
             playerTurn={playerTurn}
             plColor={plColor}
             opColor={opColor}
-            opponentCards={opCards}
+            opCards={opCards}
             setWinLoss={setWinLoss}
             setShowResults={setShowResults}
             gameEnded={gameEnded}

@@ -18,3 +18,4 @@ export const FIELDS: Array<string> = [
   CYLINDER,
   TORGUE,
 ];
+export const LOWER_FIELDS: Array<string> = [ACCELERATION, WEIGHT];
