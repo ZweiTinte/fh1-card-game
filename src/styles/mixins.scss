@@ -44,3 +44,9 @@
   margin-top: 0.5rem;
   height: min-content;
 }
+
+@mixin gameEndMessage {
+  @include cardObject;
+  height: 30rem;
+  font-size: 4rem;
+}

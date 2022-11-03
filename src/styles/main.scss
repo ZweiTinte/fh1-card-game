@@ -73,23 +73,17 @@ body {
 }
 
 .winMessage {
-  @include cardObject;
-  height: 30rem;
-  font-size: 4rem;
+  @include gameEndMessage;
   color: $green1;
 }
 
 .loseMessage {
-  @include cardObject;
-  height: 30rem;
-  font-size: 4rem;
+  @include gameEndMessage;
   color: $red1;
 }
 
 .equalMessage {
-  @include cardObject;
-  height: 30rem;
-  font-size: 4rem;
+  @include gameEndMessage;
   color: $blue4;
 }
 
