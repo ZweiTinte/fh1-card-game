@@ -19,3 +19,7 @@ export const FIELDS: Array<string> = [
   TORGUE,
 ];
 export const LOWER_FIELDS: Array<string> = [ACCELERATION, WEIGHT];
+export const COLORS_EMPTY: PlayerColors = {
+  plColor: [EMPTY, EMPTY],
+  opColor: [EMPTY, EMPTY],
+};

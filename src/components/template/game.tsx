@@ -1,5 +1,5 @@
 import * as React from "react";
-import { EMPTY, LOSE, WIN } from "../../consts";
+import { COLORS_EMPTY, EMPTY, LOSE, WIN } from "../../consts";
 import { fetchCarIDs, fillDeck, getNewCards } from "../../gameHelpers";
 import ErrorInfo from "../level1/errorInfo";
 import GameArea from "../level4/gameArea";
@@ -10,21 +10,11 @@ const Game = () => {
   const [bonus, setBonus] = React.useState<Array<CarData>>([]);
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const [showResults, setShowResults] = React.useState<boolean>(false);
-  const [colors, setColors] = React.useState<PlayerColors>({
-    plColor: [EMPTY, EMPTY],
-    opColor: [EMPTY, EMPTY],
-  });
+  const [colors, setColors] = React.useState<PlayerColors>(COLORS_EMPTY);
   const [playerTurn, setPlayerTurn] = React.useState<boolean>(true);
   const [gameEnded, setGameEnded] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
-
-  function resetColors(): void {
-    setColors({
-      plColor: [EMPTY, EMPTY],
-      opColor: [EMPTY, EMPTY],
-    });
-  }
 
   function handleError(error: Error): void {
     setError(true);
@@ -35,7 +25,7 @@ const Game = () => {
     const deckSize: number = 10;
     setBonus([]);
     setShowResults(false);
-    resetColors();
+    setColors(COLORS_EMPTY);
     setGameEnded(false);
     setPlCards(fillDeck(data, deckSize));
     setOpCards(fillDeck(data, deckSize));
@@ -74,7 +64,7 @@ const Game = () => {
       setOpCards(opCards.slice(1, opCards.length));
     }
     setShowResults(false);
-    resetColors();
+    setColors(COLORS_EMPTY);
   }
 
   React.useEffect(() => {
