@@ -1,6 +1,6 @@
 import * as React from "react";
 import { EMPTY, LOSE, WIN } from "../../consts";
-import { fillDeck, getNewCards } from "../../gameHelpers";
+import { fetchCarIDs, fillDeck, getNewCards } from "../../gameHelpers";
 import ErrorInfo from "../level1/errorInfo";
 import GameArea from "../level4/gameArea";
 
@@ -31,31 +31,23 @@ const Game = () => {
     setErrorMessage(error.message);
   }
 
+  function resolveFetching(data: Array<CarData>): void {
+    const deckSize: number = 10;
+    setBonus([]);
+    setShowResults(false);
+    resetColors();
+    setGameEnded(false);
+    setPlCards(fillDeck(data, deckSize));
+    setOpCards(fillDeck(data, deckSize));
+    setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
+    setTemplateReady(true);
+  }
+
   function newGame(): void {
     setTemplateReady(false);
     setError(false);
     setErrorMessage("");
-    async function fetchCarIDs() {
-      await fetch("http://localhost:3000/cars")
-        .then(async (res) => {
-          await res
-            .json()
-            .then((data: Array<CarData>) => {
-              const deckSize: number = 10;
-              setBonus([]);
-              setShowResults(false);
-              resetColors();
-              setGameEnded(false);
-              setPlCards(fillDeck(data, deckSize));
-              setOpCards(fillDeck(data, deckSize));
-              setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
-              setTemplateReady(true);
-            })
-            .catch(handleError);
-        })
-        .catch(handleError);
-    }
-    fetchCarIDs();
+    fetchCarIDs(resolveFetching, handleError);
   }
 
   function setWinLoss(field: string, winLoss: Array<string>): void {

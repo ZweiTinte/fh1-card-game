@@ -21,3 +21,14 @@ export function getNewCards(
     .concat(pl2Cards.slice(0, 1))
     .concat(bonus);
 }
+
+export async function fetchCarIDs(
+  resolveFetching: (data: Array<CarData>) => void,
+  handleError: (error: Error) => void
+): Promise<void> {
+  await fetch("http://localhost:3000/cars")
+    .then(async (res) => {
+      await res.json().then(resolveFetching).catch(handleError);
+    })
+    .catch(handleError);
+}
