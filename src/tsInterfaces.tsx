@@ -58,8 +58,7 @@ interface CardSectionProps {
   showResults: boolean;
   playerTurn: boolean;
   gameEnded: boolean;
-  plColor: Array<string>;
-  opColor: Array<string>;
+  colors: PlayerColors;
   opCards: Array<CarData>;
   setWinLoss: (field: string, winLoss: string[]) => void;
   setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
@@ -73,4 +72,24 @@ interface CardSubSectionProps {
   next: () => void;
   gameEnded: boolean;
   newGame: () => void;
+}
+
+interface GameAreaProps {
+  gameEnded: boolean;
+  playerTurn: boolean;
+  showResults: boolean;
+  colors: PlayerColors;
+  opCards: Array<CarData>;
+  plCards: Array<CarData>;
+  setWinLoss: (field: string, winLoss: string[]) => void;
+  setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
+  setGameEnded: React.Dispatch<React.SetStateAction<boolean>>;
+  bonus: Array<CarData>;
+  next: () => void;
+  newGame: () => void;
+}
+
+interface PlayerColors {
+  plColor: Array<string>;
+  opColor: Array<string>;
 }

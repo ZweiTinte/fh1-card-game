@@ -2,9 +2,7 @@ import * as React from "react";
 import { EMPTY, LOSE, WIN } from "../../consts";
 import { fillDeck, getNewCards } from "../../gameHelpers";
 import ErrorInfo from "../level1/errorInfo";
-import GameInfoSection from "../level1/gameInfoSection";
-import CardSubSection from "../level2/cardSubSection";
-import CardSection from "../level3/cardSection";
+import GameArea from "../level4/gameArea";
 
 const Game = () => {
   const [plCards, setPlCards] = React.useState<Array<CarData>>([]);
@@ -12,12 +10,26 @@ const Game = () => {
   const [bonus, setBonus] = React.useState<Array<CarData>>([]);
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const [showResults, setShowResults] = React.useState<boolean>(false);
-  const [plColor, setPlColor] = React.useState<Array<string>>([EMPTY, EMPTY]);
-  const [opColor, setOpColor] = React.useState<Array<string>>([EMPTY, EMPTY]);
+  const [colors, setColors] = React.useState<PlayerColors>({
+    plColor: [EMPTY, EMPTY],
+    opColor: [EMPTY, EMPTY],
+  });
   const [playerTurn, setPlayerTurn] = React.useState<boolean>(true);
   const [gameEnded, setGameEnded] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
+
+  function resetColors(): void {
+    setColors({
+      plColor: [EMPTY, EMPTY],
+      opColor: [EMPTY, EMPTY],
+    });
+  }
+
+  function handleError(error: Error): void {
+    setError(true);
+    setErrorMessage(error.message);
+  }
 
   function newGame(): void {
     setTemplateReady(false);
@@ -32,39 +44,34 @@ const Game = () => {
               const deckSize: number = 10;
               setBonus([]);
               setShowResults(false);
-              setPlColor([EMPTY, EMPTY]);
-              setOpColor([EMPTY, EMPTY]);
+              resetColors();
               setGameEnded(false);
               setPlCards(fillDeck(data, deckSize));
               setOpCards(fillDeck(data, deckSize));
               setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
               setTemplateReady(true);
             })
-            .catch((error: Error) => {
-              setError(true);
-              setErrorMessage(error.message);
-            });
+            .catch(handleError);
         })
-        .catch((error: Error) => {
-          setError(true);
-          setErrorMessage(error.message);
-        });
+        .catch(handleError);
     }
     fetchCarIDs();
   }
 
   function setWinLoss(field: string, winLoss: Array<string>): void {
-    setPlColor([field, winLoss[0]]);
-    setOpColor([field, winLoss[1]]);
+    setColors({
+      plColor: [field, winLoss[0]],
+      opColor: [field, winLoss[1]],
+    });
   }
 
   function next(): void {
-    if (plColor[1] === WIN) {
+    if (colors.plColor[1] === WIN) {
       setPlCards(getNewCards(plCards, opCards, bonus));
       setOpCards(opCards.slice(1, opCards.length));
       setBonus([]);
       setPlayerTurn(true);
-    } else if (plColor[1] === LOSE) {
+    } else if (colors.plColor[1] === LOSE) {
       setOpCards(getNewCards(opCards, plCards, bonus));
       setPlCards(plCards.slice(1, plCards.length));
       setBonus([]);
@@ -75,8 +82,7 @@ const Game = () => {
       setOpCards(opCards.slice(1, opCards.length));
     }
     setShowResults(false);
-    setPlColor([EMPTY, EMPTY]);
-    setOpColor([EMPTY, EMPTY]);
+    resetColors();
   }
 
   React.useEffect(() => {
@@ -86,29 +92,20 @@ const Game = () => {
   return (
     <>
       {templateReady && (
-        <>
-          {!gameEnded && <GameInfoSection playerTurn={playerTurn} />}
-          <CardSection
-            plCards={plCards}
-            showResults={showResults}
-            playerTurn={playerTurn}
-            plColor={plColor}
-            opColor={opColor}
-            opCards={opCards}
-            setWinLoss={setWinLoss}
-            setShowResults={setShowResults}
-            gameEnded={gameEnded}
-            setGameEnded={setGameEnded}
-          />
-          <CardSubSection
-            showResults={showResults}
-            playerTurn={playerTurn}
-            bonus={bonus}
-            next={next}
-            gameEnded={gameEnded}
-            newGame={newGame}
-          />
-        </>
+        <GameArea
+          gameEnded={gameEnded}
+          playerTurn={playerTurn}
+          showResults={showResults}
+          plCards={plCards}
+          opCards={opCards}
+          colors={colors}
+          setWinLoss={setWinLoss}
+          setShowResults={setShowResults}
+          setGameEnded={setGameEnded}
+          bonus={bonus}
+          next={next}
+          newGame={newGame}
+        />
       )}
       {error && <ErrorInfo message={errorMessage} tryAgain={newGame} />}
     </>

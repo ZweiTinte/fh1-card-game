@@ -6,8 +6,7 @@ import Card from "../level2/card";
 const CardSection = ({
   plCards,
   showResults,
-  plColor,
-  opColor,
+  colors,
   opCards,
   setWinLoss,
   setShowResults,
@@ -77,14 +76,14 @@ const CardSection = ({
                 hidden={false}
                 disabled={showResults || !playerTurn}
                 compareFields={compareFields}
-                highlight={plColor}
+                highlight={colors.plColor}
               />
               <Card
                 deck={opCards}
                 hidden={!showResults}
                 disabled
                 compareFields={compareFields}
-                highlight={opColor}
+                highlight={colors.opColor}
               />
             </>
           )}
