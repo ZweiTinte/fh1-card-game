@@ -93,3 +93,12 @@ interface PlayerColors {
   plColor: Array<string>;
   opColor: Array<string>;
 }
+
+interface Game {
+  deckSize: number;
+}
+
+interface GameProps {
+  game: Game;
+  setGame?: (newGame: Game) => void;
+}

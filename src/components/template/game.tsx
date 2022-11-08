@@ -1,10 +1,11 @@
 import * as React from "react";
 import { COLORS_EMPTY, LOSE, WIN } from "../../consts";
+import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs, fillDeck, getNewCards } from "../../gameHelpers";
 import ErrorInfo from "../level1/errorInfo";
 import GameArea from "../level4/gameArea";
 
-const Game = () => {
+const Game = ({ game }: GameProps) => {
   const [plCards, setPlCards] = React.useState<Array<CarData>>([]);
   const [opCards, setOpCards] = React.useState<Array<CarData>>([]);
   const [bonus, setBonus] = React.useState<Array<CarData>>([]);
@@ -16,19 +17,20 @@ const Game = () => {
   const [error, setError] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
 
+  console.log(game);
+
   function handleError(error: Error): void {
     setError(true);
     setErrorMessage(error.message);
   }
 
   function resolveFetching(data: Array<CarData>): void {
-    const deckSize: number = 10;
     setBonus([]);
     setShowResults(false);
     setColors(COLORS_EMPTY);
     setGameEnded(false);
-    setPlCards(fillDeck(data, deckSize));
-    setOpCards(fillDeck(data, deckSize));
+    setPlCards(fillDeck(data, game.deckSize));
+    setOpCards(fillDeck(data, game.deckSize));
     setPlayerTurn(Math.floor(Math.random() * 2) + 1 === 1);
     setTemplateReady(true);
   }
