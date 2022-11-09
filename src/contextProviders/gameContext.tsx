@@ -6,9 +6,7 @@ const defaultGameContext: Game = {
 
 export const GameContext = createContext({
   game: defaultGameContext,
-  setGame: (newGame: Game) => {
-    console.log("Happy");
-  },
+  setGame: (newGame: Game) => {},
 });
 
 export const GameContextProvider = ({
@@ -20,8 +18,11 @@ export const GameContextProvider = ({
     setGameContext(newGame);
   };
 
-  const initState: { game: Game; setGame: (newGame: Game) => void } = {
-    game: defaultGameContext,
+  const initState: GameProps = {
+    game:
+      localStorage.getItem("game") !== null
+        ? JSON.parse(localStorage.getItem("game") as string)
+        : defaultGameContext,
     setGame: setGame,
   };
 
@@ -33,6 +34,7 @@ export const GameContextProvider = ({
         game: gameContext,
         setGame: (newGame: Game) => {
           setGameContext(newGame);
+          localStorage.setItem("game", JSON.stringify(newGame));
         },
       }}
     >

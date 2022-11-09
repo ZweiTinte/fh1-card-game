@@ -16,8 +16,6 @@ const Game = ({ game }: GameProps) => {
   const [error, setError] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
 
-  console.log(game);
-
   function handleError(error: Error): void {
     setError(true);
     setErrorMessage(error.message);
