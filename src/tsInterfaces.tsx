@@ -16,11 +16,6 @@ interface TextProps {
   text: string;
 }
 
-interface WinMessageProps {
-  style: string;
-  result: number;
-}
-
 interface CardProps {
   deck: Array<CarData>;
   hidden: boolean;
@@ -36,11 +31,6 @@ interface ButtonProps extends TextProps {
 
 interface InfoListProps extends TextProps {
   list: Array<CarData>;
-}
-
-interface HeadlineProps extends TextProps {
-  deckSize?: number;
-  style?: string;
 }
 
 interface ImageProps {

@@ -1,6 +1,5 @@
 import * as React from "react";
 import { COLORS_EMPTY, LOSE, WIN } from "../../consts";
-import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs, fillDeck, getNewCards } from "../../gameHelpers";
 import ErrorInfo from "../level1/errorInfo";
 import GameArea from "../level4/gameArea";
