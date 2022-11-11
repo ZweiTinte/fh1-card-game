@@ -3,24 +3,13 @@
 @import "mixins";
 
 button {
+  @include defaultHover;
+  @include defaultInputElement;
   justify-content: left;
-  outline: none;
   width: 20rem;
-  text-align: center;
-  line-height: normal;
   display: inline-flex;
   cursor: pointer;
   padding: 0.5rem;
-  font-size: 1rem;
-  color: $white;
-  background-color: $buttonBackground;
-  border-radius: 0.2rem;
-  border-color: $blue3;
-  border-style: solid;
-  &:hover {
-    background-color: $blue4;
-    color: $black;
-  }
 }
 
 .nextButton {
@@ -34,30 +23,21 @@ button {
 
 .newGameButton {
   @include bigButton;
+  @include defaultHover;
   width: 20rem;
-  &:hover {
-    background-color: $blue4;
-    border-color: $black;
-  }
 }
 
 .winState {
   @include winStateColors;
-  &:hover {
-    @include winStateColors;
-  }
+  @include winStateHover;
 }
 
 .loseState {
   @include loseStateColors;
-  &:hover {
-    @include loseStateColors;
-  }
+  @include loseStateHover;
 }
 
 .equalState {
   @include equalStateColors;
-  &:hover {
-    @include equalStateColors;
-  }
+  @include equalStateHover;
 }

@@ -1,0 +1,98 @@
+@import "variables";
+@import "mixins";
+
+form {
+  padding: 1rem 1rem 0rem;
+}
+
+.formLabel {
+  padding-top: 0.5rem;
+  color: $white;
+  font-size: 1.25rem;
+}
+
+.formRow {
+  @include flexSpace;
+  padding-bottom: 1rem;
+  width: 23rem;
+}
+
+input[type="submit"] {
+  @include winStateHover;
+  @include defaultInputElement;
+  width: 10rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+input[type="number"] {
+  @include defaultInputElement;
+  height: 1.9rem;
+  line-height: 1.5rem;
+  padding-left: 0.8rem;
+  width: 10rem;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.dropdown {
+  @include defaultHover;
+  @include defaultInputElement;
+  width: 10rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.openDropdown {
+  @include defaultHover;
+  @include inputElement;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-top: 0.15rem solid $blue3;
+  border-right: 0.15rem solid $blue3;
+  border-left: 0.15rem solid $blue3;
+  width: 10rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.dropdownOption {
+  @include defaultHover;
+  @include inputElement;
+  border-right: 0.15rem solid $blue3;
+  border-left: 0.15rem solid $blue3;
+  width: 10rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.lastDropdownOption {
+  @include defaultHover;
+  @include inputElement;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  border-right: 0.15rem solid $blue3;
+  border-left: 0.15rem solid $blue3;
+  border-bottom: 0.15rem solid $blue3;
+  width: 10rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.formHeadline {
+  @include flexCenter;
+  color: $white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+.formCard {
+  @include cardObject;
+  width: 26rem;
+  border-radius: 0.4rem;
+  border: 0.25rem solid $cardBorder;
+  background-color: $cardBackground;
+  flex-direction: column;
+}

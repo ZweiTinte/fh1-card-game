@@ -16,15 +16,6 @@
   justify-content: right;
 }
 
-.formHeadline {
-  display: flex;
-  justify-content: center;
-  color: $white;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  font-size: 2rem;
-}
-
 .infoboxHeadline {
   @include headline;
   height: 1.5rem;
@@ -47,7 +38,6 @@ body {
   height: "100vh";
   min-height: "100vh";
   font-weight: 400;
-  font-style: normal;
   font-family: "Ubuntu";
 }
 
@@ -63,18 +53,7 @@ body {
 
 .card {
   @include cardObject;
-  border-radius: 0.4rem;
-  border: 0.25rem solid $cardBorder;
-  background-color: $cardBackground;
-  flex-direction: column;
-}
-
-.formCard {
-  width: 25rem;
-  margin: 0.5rem 0.5rem 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 21rem;
   border-radius: 0.4rem;
   border: 0.25rem solid $cardBorder;
   background-color: $cardBackground;
@@ -82,13 +61,11 @@ body {
 }
 
 .gameLayout {
-  display: flex;
-  justify-content: center;
+  @include flexCenter;
 }
 
 .colLayout {
-  display: flex;
-  justify-content: center;
+  @include flexCenter;
   flex-direction: column;
   align-items: center;
 }
@@ -109,149 +86,11 @@ body {
 }
 
 .errorMessage {
+  @include flexCenter;
   width: 80%;
   margin: 0.5rem 0.5rem 0.5rem;
-  display: flex;
-  justify-content: center;
   align-items: center;
   height: 30rem;
   font-size: 2rem;
   color: $red1;
-}
-
-form {
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.formLabel {
-  padding-top: 0.5rem;
-  color: $white;
-  font-size: 1.25rem;
-}
-
-.formRow {
-  padding-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  width: 22rem;
-}
-
-input[type="submit"] {
-  justify-content: left;
-  outline: none;
-  width: 10rem;
-  text-align: center;
-  line-height: normal;
-  display: inline-flex;
-  cursor: pointer;
-  padding: 0.5rem;
-  font-size: 1rem;
-  color: $white;
-  margin-top: 1rem;
-  background-color: $buttonBackground;
-  border-radius: 0.2rem;
-  border-color: $blue3;
-  border-style: solid;
-  &:hover {
-    background-color: $green1;
-    border-color: $green2;
-  }
-}
-
-input[type="number"] {
-  border-radius: 0.25rem;
-  border: 0.15rem solid $blue3;
-  color: $white;
-  background-color: $buttonBackground;
-  display: inline-block;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  height: 1.8rem;
-  line-height: 1.5rem;
-  padding-left: 0.8rem;
-  width: 9rem;
-  -moz-appearance: textfield;
-  appearance: textfield;
-  outline: none;
-}
-
-.select {
-  border-radius: 0.25rem;
-  border: 0.15rem solid $blue3;
-  color: $white;
-  background-color: $buttonBackground;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  width: 9rem;
-  padding: 0.5rem;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background-color: $blue4;
-    color: $black;
-  }
-}
-
-.openDropdown {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  border-top: 0.15rem solid $blue3;
-  border-right: 0.15rem solid $blue3;
-  border-left: 0.15rem solid $blue3;
-  color: $white;
-  background-color: $buttonBackground;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  width: 9rem;
-  padding: 0.5rem;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background-color: $blue4;
-    color: $black;
-  }
-}
-
-.selectOption {
-  border-right: 0.15rem solid $blue3;
-  border-left: 0.15rem solid $blue3;
-  color: $white;
-  background-color: $buttonBackground;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  width: 9rem;
-  padding: 0.5rem;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background-color: $blue4;
-    color: $black;
-  }
-}
-
-.lastSelectOption {
-  border-bottom-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  border-right: 0.15rem solid $blue3;
-  border-left: 0.15rem solid $blue3;
-  border-bottom: 0.15rem solid $blue3;
-  color: $white;
-  background-color: $buttonBackground;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 1rem;
-  width: 9rem;
-  padding: 0.5rem;
-  outline: none;
-  cursor: pointer;
-  &:hover {
-    background-color: $blue4;
-    color: $black;
-  }
 }

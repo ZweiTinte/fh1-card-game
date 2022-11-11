@@ -1,3 +1,4 @@
+import { navigate } from "gatsby";
 import * as React from "react";
 import { GameContext } from "../../contextProviders/gameContext";
 import Headline from "../atoms/headline";
@@ -31,7 +32,7 @@ const NewGame = () => {
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setGame({ deckSize: deckSize });
-    window.location.href = "game";
+    navigate("game");
   };
 
   return (
@@ -62,7 +63,7 @@ const NewGame = () => {
             </label>
             <div className="colLayout" ref={ref}>
               <div
-                className={open ? "openDropdown" : "select"}
+                className={open ? "openDropdown" : "dropdown"}
                 onClick={() => setOpen(!open)}
               >
                 {ai}
@@ -73,8 +74,8 @@ const NewGame = () => {
                     <div
                       className={
                         item.id === aiList.length
-                          ? "lastSelectOption"
-                          : "selectOption"
+                          ? "lastDropdownOption"
+                          : "dropdownOption"
                       }
                       key={item.id}
                       onClick={() => {

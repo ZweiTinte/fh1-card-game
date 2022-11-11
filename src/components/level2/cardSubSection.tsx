@@ -1,3 +1,4 @@
+import { navigate } from "gatsby";
 import * as React from "react";
 import Button from "../atoms/button";
 import InfoList from "../level1/infoList";
@@ -16,7 +17,7 @@ const CardSubSection = ({
         <Button
           text={"New Game"}
           color={"newGameButton"}
-          onClick={() => newGame()}
+          onClick={() => navigate("/")}
         />
       ) : (
         <>
