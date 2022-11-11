@@ -1,33 +1,19 @@
 import { navigate } from "gatsby";
 import * as React from "react";
 import { GameContext } from "../../contextProviders/gameContext";
+import Dropdown from "../atoms/dropdown";
 import Headline from "../atoms/headline";
+import NumberInput from "../atoms/numberInput";
 
 const NewGame = () => {
-  const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const { game, setGame } = React.useContext(GameContext);
   const [deckSize, setDeckSize] = React.useState<number>(game.deckSize);
   const [ai, setAi] = React.useState<string>("random");
-  const [open, setOpen] = React.useState<boolean>(false);
-  const ref = React.useRef<HTMLDivElement | null>(null);
 
   const aiList = [
     { id: 1, value: "random" },
     { id: 2, value: "other" },
   ];
-
-  const handleClickOutside = (event: Event) => {
-    if (ref.current && !ref.current.contains(event.target as HTMLDivElement)) {
-      setOpen(false);
-    }
-  };
-
-  React.useEffect(() => {
-    document.addEventListener("click", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, true);
-    };
-  }, [ref]);
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -41,53 +27,21 @@ const NewGame = () => {
         <Headline text={"New Game"} style="formHeadline" />
         <form onSubmit={submitHandler}>
           <div className="formRow">
-            <label className="formLabel" htmlFor="deckSize">
-              Decksize:
-            </label>
-            <input
-              id="deckSize"
+            <label className="formLabel">Decksize:</label>
+            <NumberInput
               value={deckSize}
-              onChange={(e) => {
-                if (e.target.value.length > 0) {
-                  setDeckSize(parseInt(e.target.value));
-                }
-              }}
-              type="number"
+              setValue={setDeckSize}
               min={1}
               max={99}
             />
           </div>
           <div className="formRow">
-            <label className="formLabel" htmlFor="ai">
-              Opponent AI:
-            </label>
-            <div className="colLayout" ref={ref}>
-              <div
-                className={open ? "openDropdown" : "dropdown"}
-                onClick={() => setOpen(!open)}
-              >
-                {ai}
-              </div>
-              {open &&
-                aiList.map((item) => {
-                  return (
-                    <div
-                      className={
-                        item.id === aiList.length
-                          ? "lastDropdownOption"
-                          : "dropdownOption"
-                      }
-                      key={item.id}
-                      onClick={() => {
-                        setAi(item.value);
-                        setOpen(false);
-                      }}
-                    >
-                      {item.value}
-                    </div>
-                  );
-                })}
-            </div>
+            <label className="formLabel">Opponent AI:</label>
+            <Dropdown
+              dropDownItem={ai}
+              setDropdownItem={setAi}
+              dropDownData={aiList}
+            />
           </div>
           <div className="formRow">
             <input type="submit" value="Start a new game" />
