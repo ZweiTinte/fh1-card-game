@@ -36,7 +36,7 @@ const Dropdown = ({
         dropDownData.map((item) => {
           return (
             <div
-              className="dropdownOption"
+              className="dropdown"
               key={item.id}
               onClick={() => {
                 setDropdownItem(item.value);

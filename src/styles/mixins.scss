@@ -47,7 +47,9 @@
 }
 
 @mixin loseStateHover {
-  @include loseStateColors;
+  &:hover {
+    @include loseStateColors;
+  }
 }
 
 @mixin equalStateColors {

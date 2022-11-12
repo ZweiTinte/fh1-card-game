@@ -45,14 +45,6 @@ input[type="number"] {
   cursor: pointer;
 }
 
-.dropdownOption {
-  @include defaultHover;
-  @include inputElement;
-  width: 10rem;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
 .formHeadline {
   @include flexCenter;
   color: $white;
