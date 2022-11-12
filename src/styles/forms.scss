@@ -39,20 +39,7 @@ input[type="number"] {
 
 .dropdown {
   @include defaultHover;
-  @include defaultInputElement;
-  width: 10rem;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.openDropdown {
-  @include defaultHover;
   @include inputElement;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-  border-top: 0.15rem solid $blue3;
-  border-right: 0.15rem solid $blue3;
-  border-left: 0.15rem solid $blue3;
   width: 10rem;
   padding: 0.5rem;
   cursor: pointer;
@@ -61,21 +48,6 @@ input[type="number"] {
 .dropdownOption {
   @include defaultHover;
   @include inputElement;
-  border-right: 0.15rem solid $blue3;
-  border-left: 0.15rem solid $blue3;
-  width: 10rem;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.lastDropdownOption {
-  @include defaultHover;
-  @include inputElement;
-  border-bottom-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-  border-right: 0.15rem solid $blue3;
-  border-left: 0.15rem solid $blue3;
-  border-bottom: 0.15rem solid $blue3;
   width: 10rem;
   padding: 0.5rem;
   cursor: pointer;
@@ -96,4 +68,9 @@ input[type="number"] {
   border: 0.25rem solid $cardBorder;
   background-color: $cardBackground;
   flex-direction: column;
+}
+
+.dropdownBorder {
+  border-radius: 0.25rem;
+  border: 0.15rem solid $blue3;
 }

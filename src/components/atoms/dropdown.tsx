@@ -28,22 +28,15 @@ const Dropdown = ({
   }, [ref]);
 
   return (
-    <div className="colLayout" ref={ref}>
-      <div
-        className={open ? "openDropdown" : "dropdown"}
-        onClick={() => setOpen(!open)}
-      >
+    <div className="colLayout dropdownBorder" ref={ref}>
+      <div className="dropdown" onClick={() => setOpen(!open)}>
         {dropDownItem}
       </div>
       {open &&
         dropDownData.map((item) => {
           return (
             <div
-              className={
-                item.id === dropDownData.length
-                  ? "lastDropdownOption"
-                  : "dropdownOption"
-              }
+              className="dropdownOption"
               key={item.id}
               onClick={() => {
                 setDropdownItem(item.value);
