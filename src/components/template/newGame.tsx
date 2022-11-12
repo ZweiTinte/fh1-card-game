@@ -23,8 +23,12 @@ const NewGame = () => {
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setGame({ deckSize: deckSize });
-    navigate("game");
+    if (!deckSize) {
+      setDeckSize(game.deckSize);
+    } else {
+      setGame({ deckSize: deckSize });
+      navigate("game");
+    }
   };
 
   function handleError(error: Error): void {

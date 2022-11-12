@@ -15,9 +15,7 @@ const NumberInput = ({
     <input
       value={value}
       onChange={(e) => {
-        if (e.target.value.length > 0) {
-          setValue(parseInt(e.target.value));
-        }
+        setValue(parseInt(e.target.value));
       }}
       type="number"
       min={min}
