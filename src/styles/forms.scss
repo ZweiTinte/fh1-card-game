@@ -68,3 +68,9 @@ input[type="number"] {
   border-radius: 0.25rem;
   border: 0.15rem solid $blue3;
 }
+
+.priority {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
