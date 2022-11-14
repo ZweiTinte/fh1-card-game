@@ -94,3 +94,9 @@ body {
   font-size: 2rem;
   color: $red1;
 }
+
+.priority {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}

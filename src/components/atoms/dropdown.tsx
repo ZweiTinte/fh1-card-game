@@ -28,7 +28,10 @@ const Dropdown = ({
   }, [ref]);
 
   return (
-    <div className="colLayout dropdownBorder" ref={ref}>
+    <div
+      className={`colLayout dropdownBorder ${open ? "priority" : ""}`}
+      ref={ref}
+    >
       <div className="dropdown" onClick={() => setOpen(!open)}>
         {dropDownItem}
       </div>
