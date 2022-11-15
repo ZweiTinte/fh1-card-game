@@ -4,6 +4,7 @@ import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs } from "../../gameHelpers";
 import Dropdown from "../atoms/dropdown";
 import Headline from "../atoms/headline";
+import Multiselect from "../atoms/multiselect";
 import NumberInput from "../atoms/numberInput";
 import ErrorInfo from "../level1/errorInfo";
 
@@ -11,6 +12,7 @@ const NewGame = () => {
   const { game, setGame } = React.useContext(GameContext);
   const [deckSize, setDeckSize] = React.useState<number>(game.deckSize);
   const [ai, setAi] = React.useState<string>("random");
+  const [ai2, setAi2] = React.useState<Array<string>>([]);
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
@@ -73,6 +75,14 @@ const NewGame = () => {
                 <Dropdown
                   dropDownItem={ai}
                   setDropdownItem={setAi}
+                  dropDownData={aiList}
+                />
+              </div>
+              <div className="formRow">
+                <label className="formLabel">Multiselect:</label>
+                <Multiselect
+                  dropDownItems={ai2}
+                  setDropdownItems={setAi2}
                   dropDownData={aiList}
                 />
               </div>
