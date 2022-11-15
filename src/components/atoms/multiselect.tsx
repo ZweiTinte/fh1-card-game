@@ -39,7 +39,9 @@ const Multiselect = ({
         dropDownData.map((item) => {
           return (
             <div
-              className="dropdown"
+              className={
+                dropDownItems.includes(item.value) ? "selectedItem" : "dropdown"
+              }
               key={item.id}
               onClick={() => {
                 let newDropdownItems = dropDownItems;

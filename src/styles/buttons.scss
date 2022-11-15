@@ -1,6 +1,6 @@
 @use "sass:math";
-@import "variables";
-@import "mixins";
+@import "_variables";
+@import "_mixins";
 
 button {
   @include defaultHover;

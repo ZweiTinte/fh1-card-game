@@ -1,5 +1,5 @@
-@import "variables";
-@import "mixins";
+@import "_variables";
+@import "_mixins";
 
 form {
   padding: 1rem 1rem 0rem;
@@ -73,4 +73,14 @@ input[type="number"] {
   position: absolute;
   right: 0;
   z-index: 1;
+}
+
+.selectedItem {
+  @include defaultHover;
+  @include inputElement;
+  width: 10rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: $blue4;
+  color: $black;
 }
