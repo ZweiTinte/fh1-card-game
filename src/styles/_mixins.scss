@@ -1,4 +1,4 @@
-@import "variables";
+@import "_variables";
 
 @mixin flexSpace {
   display: flex;
@@ -8,20 +8,6 @@
 @mixin flexCenter {
   display: flex;
   justify-content: center;
-}
-
-@mixin headline {
-  @include flexSpace;
-  color: $white;
-  padding-top: 0.5rem;
-  font-size: 1rem;
-}
-
-@mixin turnHeadline {
-  @include headline;
-  height: 1.5rem;
-  width: 43rem;
-  font-weight: bold;
 }
 
 @mixin cardObject {

@@ -1,29 +1,6 @@
 @import "_variables";
 @import "_mixins";
 
-.headline {
-  @include headline;
-  height: 2.5rem;
-  width: 19rem;
-}
-
-.playerHeadline {
-  @include turnHeadline;
-}
-
-.opponentHeadline {
-  @include turnHeadline;
-  justify-content: right;
-}
-
-.infoboxHeadline {
-  @include headline;
-  height: 1.5rem;
-  width: 19rem;
-  border-bottom: 0.15rem solid $cardBorder;
-  margin-bottom: 0.5rem;
-}
-
 .listItem {
   text-align: left;
   font-size: 1rem;
@@ -105,12 +82,4 @@ body {
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.sidebarHeadline {
-  @include headline;
-  height: 1.5rem;
-  width: 14rem;
-  border-bottom: 0.15rem solid $cardBorder;
-  margin-bottom: 0.5rem;
 }
