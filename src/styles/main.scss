@@ -94,3 +94,23 @@ body {
   font-size: 2rem;
   color: $red1;
 }
+
+.sidebar {
+  position: fixed;
+  height: 100vw;
+  width: 14rem;
+  left: 0;
+  top: 0;
+  background-color: $cardBackground;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.sidebarHeadline {
+  @include headline;
+  height: 1.5rem;
+  width: 14rem;
+  border-bottom: 0.15rem solid $cardBorder;
+  margin-bottom: 0.5rem;
+}
