@@ -1,5 +1,6 @@
 import * as React from "react";
-import { EQUAL, FIELDS, LOSE, LOWER_FIELDS, WIN } from "../../consts";
+import { EQUAL, LOSE, LOWER_FIELDS, WIN } from "../../consts";
+import { GameContext } from "../../contextProviders/gameContext";
 import WinMessage from "../atoms/winMessage";
 import Card from "../level2/card";
 
@@ -17,6 +18,7 @@ const CardSection = ({
   const [gameResult, setGameResult] = React.useState<number>(0);
   const [gameResultMessage, setGameResultMessage] = React.useState<string>("");
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
+  const game: Game = React.useContext(GameContext).game;
 
   function compareFields(field: string): void {
     if (
@@ -54,7 +56,7 @@ const CardSection = ({
       setGameResultMessage("winMessage");
       setGameResult(1);
     } else if (!playerTurn && !showResults) {
-      compareFields(FIELDS[Math.floor(Math.random() * 6)]);
+      compareFields(game.ai.getAiResponse());
       setShowResults(true);
     }
     if (plCards.length === 0 || opCards.length === 0) {

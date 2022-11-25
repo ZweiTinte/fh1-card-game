@@ -1,7 +1,9 @@
 import React, { createContext, useState } from "react";
+import { RandomAi } from "../ai/randomAi";
 
 const defaultGameContext: Game = {
   deckSize: 10,
+  ai: new RandomAi(),
 };
 
 export const GameContext = createContext({

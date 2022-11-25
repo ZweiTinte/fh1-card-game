@@ -84,9 +84,15 @@ interface PlayerColors {
 
 interface Game {
   deckSize: number;
+  ai: Ai;
 }
 
 interface GameProps {
   game: Game;
   setGame?: (newGame: Game) => void;
+}
+
+interface Ai {
+  name: string;
+  getAiResponse: () => string;
 }

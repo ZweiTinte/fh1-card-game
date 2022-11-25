@@ -1,5 +1,6 @@
 import { navigate } from "gatsby";
 import * as React from "react";
+import { RandomAi } from "../../ai/randomAi";
 import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs } from "../../gameHelpers";
 import Dropdown from "../atoms/dropdown";
@@ -17,7 +18,7 @@ const NewGame = () => {
   const [maxDeckSize, setMaxDeckSize] = React.useState<number>(game.deckSize);
 
   const aiList = [
-    { id: 1, value: "random" },
+    { id: 1, value: "Random" },
     { id: 2, value: "other" },
   ];
 
@@ -26,7 +27,7 @@ const NewGame = () => {
     if (!deckSize) {
       setDeckSize(game.deckSize);
     } else {
-      setGame({ deckSize: deckSize });
+      setGame({ deckSize: deckSize, ai: new RandomAi() });
       navigate("game");
     }
   };
