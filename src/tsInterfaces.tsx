@@ -94,5 +94,5 @@ interface GameProps {
 
 interface Ai {
   name: string;
-  getAiResponse: () => string;
+  getAiResponse: (card: CarData) => string;
 }

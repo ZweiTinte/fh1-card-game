@@ -1,5 +1,7 @@
 import { navigate } from "gatsby";
 import * as React from "react";
+import { aiList } from "../../ai/aiHelpers";
+import { LearningAi } from "../../ai/learningAi";
 import { RandomAi } from "../../ai/randomAi";
 import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs } from "../../gameHelpers";
@@ -11,23 +13,18 @@ import ErrorInfo from "../level1/errorInfo";
 const NewGame = () => {
   const { game, setGame } = React.useContext(GameContext);
   const [deckSize, setDeckSize] = React.useState<number>(game.deckSize);
-  const [ai, setAi] = React.useState<string>("random");
+  const [ai, setAi] = React.useState<Ai>(new RandomAi());
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
   const [errorMessage, setErrorMessage] = React.useState<string>("");
   const [maxDeckSize, setMaxDeckSize] = React.useState<number>(game.deckSize);
-
-  const aiList = [
-    { id: 1, value: "Random" },
-    { id: 2, value: "other" },
-  ];
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (!deckSize) {
       setDeckSize(game.deckSize);
     } else {
-      setGame({ deckSize: deckSize, ai: new RandomAi() });
+      setGame({ deckSize: deckSize, ai: ai });
       navigate("game");
     }
   };

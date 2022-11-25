@@ -21,26 +21,28 @@ const CardSection = ({
   const game: Game = React.useContext(GameContext).game;
 
   function compareFields(field: string): void {
-    if (
-      plCards[0][field as keyof CarData] > opCards[0][field as keyof CarData]
-    ) {
-      if (!LOWER_FIELDS.includes(field)) {
-        setWinLoss(field, [WIN, LOSE]);
+    if (plCards[0] && opCards[0]) {
+      if (
+        plCards[0][field as keyof CarData] > opCards[0][field as keyof CarData]
+      ) {
+        if (!LOWER_FIELDS.includes(field)) {
+          setWinLoss(field, [WIN, LOSE]);
+        } else {
+          setWinLoss(field, [LOSE, WIN]);
+        }
+      } else if (
+        plCards[0][field as keyof CarData] < opCards[0][field as keyof CarData]
+      ) {
+        if (!LOWER_FIELDS.includes(field)) {
+          setWinLoss(field, [LOSE, WIN]);
+        } else {
+          setWinLoss(field, [WIN, LOSE]);
+        }
       } else {
-        setWinLoss(field, [LOSE, WIN]);
+        setWinLoss(field, [EQUAL, EQUAL]);
       }
-    } else if (
-      plCards[0][field as keyof CarData] < opCards[0][field as keyof CarData]
-    ) {
-      if (!LOWER_FIELDS.includes(field)) {
-        setWinLoss(field, [LOSE, WIN]);
-      } else {
-        setWinLoss(field, [WIN, LOSE]);
-      }
-    } else {
-      setWinLoss(field, [EQUAL, EQUAL]);
+      setShowResults(true);
     }
-    setShowResults(true);
   }
 
   React.useEffect(() => {
@@ -56,7 +58,7 @@ const CardSection = ({
       setGameResultMessage("winMessage");
       setGameResult(1);
     } else if (!playerTurn && !showResults) {
-      compareFields(game.ai.getAiResponse());
+      compareFields(game.ai.getAiResponse(opCards[0]));
       setShowResults(true);
     }
     if (plCards.length === 0 || opCards.length === 0) {

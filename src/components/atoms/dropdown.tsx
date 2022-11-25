@@ -1,9 +1,9 @@
 import * as React from "react";
 
 interface DropdownProps {
-  dropDownItem: string;
-  setDropdownItem: React.Dispatch<React.SetStateAction<string>>;
-  dropDownData: Array<{ id: number; value: string }>;
+  dropDownItem: Ai;
+  setDropdownItem: React.Dispatch<React.SetStateAction<Ai>>;
+  dropDownData: Array<{ id: number; value: Ai }>;
 }
 
 const Dropdown = ({
@@ -33,7 +33,7 @@ const Dropdown = ({
       ref={ref}
     >
       <div className="dropdown" onClick={() => setOpen(!open)}>
-        {dropDownItem}
+        {dropDownItem.name}
       </div>
       {open &&
         dropDownData.map((item) => {
@@ -42,11 +42,15 @@ const Dropdown = ({
               className="dropdown"
               key={item.id}
               onClick={() => {
-                setDropdownItem(item.value);
+                setDropdownItem(
+                  dropDownData.filter(function (i) {
+                    return i.value.name === item.value.name;
+                  })[0].value
+                );
                 setOpen(false);
               }}
             >
-              {item.value}
+              {item.value.name}
             </div>
           );
         })}

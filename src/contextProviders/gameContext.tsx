@@ -1,10 +1,19 @@
 import React, { createContext, useState } from "react";
+import { aiList } from "../ai/aiHelpers";
 import { RandomAi } from "../ai/randomAi";
 
 const defaultGameContext: Game = {
   deckSize: 10,
   ai: new RandomAi(),
 };
+
+function getGameFromLocalStorage(): Game {
+  let game = JSON.parse(localStorage.getItem("game") as string);
+  game.ai = aiList.filter(function (ai) {
+    return ai.value.name === game.ai.name;
+  })[0].value;
+  return game;
+}
 
 export const GameContext = createContext({
   game: defaultGameContext,
@@ -23,7 +32,7 @@ export const GameContextProvider = ({
   const initState: GameProps = {
     game:
       localStorage.getItem("game") !== null
-        ? JSON.parse(localStorage.getItem("game") as string)
+        ? getGameFromLocalStorage()
         : defaultGameContext,
     setGame: setGame,
   };
