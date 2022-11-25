@@ -15,7 +15,6 @@ const GameArea = ({
   setGameEnded,
   bonus,
   next,
-  newGame,
 }: GameAreaProps) => {
   return (
     <>
@@ -37,7 +36,6 @@ const GameArea = ({
         bonus={bonus}
         next={next}
         gameEnded={gameEnded}
-        newGame={newGame}
       />
     </>
   );

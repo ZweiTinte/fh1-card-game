@@ -85,7 +85,6 @@ const Game = ({ game }: GameProps) => {
           setGameEnded={setGameEnded}
           bonus={bonus}
           next={next}
-          newGame={newGame}
         />
       )}
       {error && <ErrorInfo message={errorMessage} tryAgain={newGame} />}

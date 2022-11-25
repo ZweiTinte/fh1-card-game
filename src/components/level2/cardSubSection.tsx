@@ -9,7 +9,6 @@ const CardSubSection = ({
   bonus,
   next,
   gameEnded,
-  newGame,
 }: CardSubSectionProps) => {
   return (
     <div className={"gameLayout"}>

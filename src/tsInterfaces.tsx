@@ -61,7 +61,6 @@ interface CardSubSectionProps {
   bonus: Array<CarData>;
   next: () => void;
   gameEnded: boolean;
-  newGame: () => void;
 }
 
 interface GameAreaProps {
@@ -76,7 +75,6 @@ interface GameAreaProps {
   setGameEnded: React.Dispatch<React.SetStateAction<boolean>>;
   bonus: Array<CarData>;
   next: () => void;
-  newGame: () => void;
 }
 
 interface PlayerColors {
