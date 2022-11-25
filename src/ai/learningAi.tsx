@@ -10,20 +10,8 @@ interface CarFields {
 }
 
 function getCardObject(card: CarData): CarFields {
-  let carObject: CarFields = {
-    topspeed: 0,
-    power: 0,
-    acceleration: 0,
-    weight: 0,
-    cylinder: 0,
-    torgue: 0,
-  };
-  for (let i = 0; i < FIELDS.length; i++) {
-    carObject[FIELDS[i] as keyof CarFields] = card[
-      FIELDS[i] as keyof CarData
-    ] as number;
-  }
-  return carObject;
+  let topspeed, power, acceleration, weight, cylinder, torgue;
+  return ({ topspeed, power, acceleration, weight, cylinder, torgue } = card);
 }
 
 export class LearningAi implements Ai {
