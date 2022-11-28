@@ -91,8 +91,3 @@ interface GameProps {
   game: Game;
   setGame?: (newGame: Game) => void;
 }
-
-interface Ai {
-  name: string;
-  getAiResponse: (card: CarData) => string;
-}

@@ -40,6 +40,9 @@ const Game = ({ game }: GameProps) => {
   }
 
   function setWinLoss(field: string, winLoss: Array<string>): void {
+    if (game.ai.learning) {
+      game.ai.learn(field, winLoss[0], opCards[0]);
+    }
     setColors({
       plColor: [field, winLoss[0]],
       opColor: [field, winLoss[1]],
