@@ -1,9 +1,11 @@
 import * as React from "react";
 
-interface DropdownProps {
+export type DropdownData = Array<{ id: number; value: Ai }>;
+
+export interface DropdownProps {
   dropDownItem: Ai;
   setDropdownItem: React.Dispatch<React.SetStateAction<Ai>>;
-  dropDownData: Array<{ id: number; value: Ai }>;
+  dropDownData: DropdownData;
 }
 
 const Dropdown = ({

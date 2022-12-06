@@ -6,6 +6,7 @@ import { RandomAi } from "../../ai/randomAi";
 import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs } from "../../gameHelpers";
 import Dropdown from "../atoms/dropdown";
+import DropdownSearch from "../atoms/dropdownSearch";
 import Headline from "../atoms/headline";
 import NumberInput from "../atoms/numberInput";
 import ErrorInfo from "../level1/errorInfo";
@@ -69,6 +70,14 @@ const NewGame = () => {
               <div className="formRow">
                 <label className="formLabel">Opponent AI:</label>
                 <Dropdown
+                  dropDownItem={ai}
+                  setDropdownItem={setAi}
+                  dropDownData={aiList}
+                />
+              </div>
+              <div className="formRow">
+                <label className="formLabel">Opponent AI:</label>
+                <DropdownSearch
                   dropDownItem={ai}
                   setDropdownItem={setAi}
                   dropDownData={aiList}
