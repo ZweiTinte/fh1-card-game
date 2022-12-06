@@ -6,7 +6,6 @@ import { RandomAi } from "../../ai/randomAi";
 import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs } from "../../gameHelpers";
 import Dropdown from "../atoms/dropdown";
-import DropdownSearch from "../atoms/dropdownSearch";
 import Headline from "../atoms/headline";
 import NumberInput from "../atoms/numberInput";
 import ErrorInfo from "../level1/errorInfo";
