@@ -1,7 +1,6 @@
 import { navigate } from "gatsby";
 import * as React from "react";
 import { aiList } from "../../ai/aiHelpers";
-import { LearningAi } from "../../ai/learningAi";
 import { RandomAi } from "../../ai/randomAi";
 import { GameContext } from "../../contextProviders/gameContext";
 import { fetchCarIDs } from "../../gameHelpers";
