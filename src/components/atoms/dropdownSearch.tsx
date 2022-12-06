@@ -37,7 +37,9 @@ const DropdownSearch = ({
       {open ? (
         <input
           type="text"
-          className="dropdownInput"
+          className={`${
+            filteredData.length > 0 ? "dropdownInput" : "dropdownEmpty"
+          }`}
           onChange={(e) => {
             if (strictSearch) {
               setFilteredData(

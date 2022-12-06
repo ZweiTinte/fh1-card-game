@@ -76,14 +76,6 @@ const NewGame = () => {
                 />
               </div>
               <div className="formRow">
-                <label className="formLabel">Opponent AI:</label>
-                <DropdownSearch
-                  dropDownItem={ai}
-                  setDropdownItem={setAi}
-                  dropDownData={aiList}
-                />
-              </div>
-              <div className="formRow">
                 <input type="submit" value="Start a new game" />
               </div>
             </form>
