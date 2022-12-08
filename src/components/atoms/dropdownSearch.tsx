@@ -1,4 +1,5 @@
 import * as React from "react";
+import { itemAction } from "../../componentHelpers";
 import { DropdownData, DropdownProps } from "./dropdown";
 
 interface DropdownSearchProps extends DropdownProps {
@@ -22,6 +23,20 @@ const DropdownSearch = ({
     }
   };
 
+  function setData(e: React.ChangeEvent<HTMLInputElement>) {
+    setFilteredData(
+      dropDownData.filter(function (i) {
+        if (strictSearch) {
+          return i.value.name.includes(e.target.value);
+        } else {
+          return i.value.name
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase());
+        }
+      })
+    );
+  }
+
   React.useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
     return () => {
@@ -41,23 +56,14 @@ const DropdownSearch = ({
             filteredData.length > 0 ? "dropdownInput" : "dropdownEmpty"
           }`}
           onChange={(e) => {
-            if (strictSearch) {
-              setFilteredData(
-                dropDownData.filter(function (i) {
-                  return i.value.name.includes(e.target.value);
-                })
-              );
-            } else {
-              setFilteredData(
-                dropDownData.filter(function (i) {
-                  return i.value.name
-                    .toLowerCase()
-                    .includes(e.target.value.toLowerCase());
-                })
-              );
-            }
+            setData(e);
           }}
           autoFocus
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown" && filteredData.length > 0) {
+              (e.currentTarget.nextSibling as HTMLDivElement)?.focus();
+            }
+          }}
         />
       ) : (
         <div
@@ -74,6 +80,7 @@ const DropdownSearch = ({
         filteredData.map((item) => {
           return (
             <div
+              tabIndex={0}
               className="dropdown"
               key={item.id}
               onClick={() => {
@@ -84,6 +91,7 @@ const DropdownSearch = ({
                 );
                 setOpen(false);
               }}
+              onKeyDown={(e) => itemAction(e)}
             >
               {item.value.name}
             </div>
