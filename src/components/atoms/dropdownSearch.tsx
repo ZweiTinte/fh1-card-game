@@ -1,5 +1,5 @@
 import * as React from "react";
-import { itemAction } from "../../componentHelpers";
+import { inputKeyDownAction, itemAction } from "../../dropdownSearchHelpers";
 import { DropdownData, DropdownProps } from "./dropdown";
 
 interface DropdownSearchProps extends DropdownProps {
@@ -55,15 +55,9 @@ const DropdownSearch = ({
           className={`${
             filteredData.length > 0 ? "dropdownInput" : "dropdownEmpty"
           }`}
-          onChange={(e) => {
-            setData(e);
-          }}
+          onChange={(e) => setData(e)}
+          onKeyDown={(e) => inputKeyDownAction(e, filteredData)}
           autoFocus
-          onKeyDown={(e) => {
-            if (e.key === "ArrowDown" && filteredData.length > 0) {
-              (e.currentTarget.nextSibling as HTMLDivElement)?.focus();
-            }
-          }}
         />
       ) : (
         <div
