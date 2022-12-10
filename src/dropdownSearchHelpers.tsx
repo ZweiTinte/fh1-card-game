@@ -21,11 +21,9 @@ export function itemAction(e: React.KeyboardEvent<HTMLDivElement>) {
   }
 }
 
-export function inputKeyDownAction(
-  e: React.KeyboardEvent<HTMLInputElement>,
-  filteredData: DropdownData
-) {
-  if (e.key === "ArrowDown" && filteredData.length > 0) {
+export function inputKeyDownAction(e: React.KeyboardEvent<HTMLInputElement>) {
+  const target = e.currentTarget as HTMLElement;
+  if (e.key === "ArrowDown" && target && target.nextSibling !== null) {
     (e.currentTarget.nextSibling as HTMLDivElement)?.focus();
   }
 }

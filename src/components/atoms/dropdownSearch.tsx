@@ -56,7 +56,7 @@ const DropdownSearch = ({
             filteredData.length > 0 ? "dropdownInput" : "dropdownEmpty"
           }`}
           onChange={(e) => setData(e)}
-          onKeyDown={(e) => inputKeyDownAction(e, filteredData)}
+          onKeyDown={(e) => inputKeyDownAction(e)}
           autoFocus
         />
       ) : (
