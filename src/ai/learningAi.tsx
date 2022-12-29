@@ -26,7 +26,7 @@ function increaseFieldChance(
 }
 
 function getBestField(aiCardData: AiData): string {
-  let winnerFields: Array<{ field: string; winChance: number }> = [];
+  let winnerFields: { field: string; winChance: number }[] = [];
   for (const [key, value] of Object.entries(aiCardData)) {
     if (key !== "id") {
       const winChance = value.win / (value.win + value.lose);
@@ -55,7 +55,7 @@ function getBestField(aiCardData: AiData): string {
 export class LearningAi implements Ai {
   name: string = "Learning";
   learning: boolean = true;
-  data: Array<AiData> = [];
+  data: AiData[] = [];
 
   learn(field: string, winLoss: string, card: CarData) {
     const aiCardData = this.data.find((c) => c.id === card.id);

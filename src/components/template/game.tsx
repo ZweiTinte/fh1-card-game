@@ -5,9 +5,9 @@ import ErrorInfo from "../level1/errorInfo";
 import GameArea from "../level4/gameArea";
 
 const Game = ({ game }: GameProps) => {
-  const [plCards, setPlCards] = React.useState<Array<CarData>>([]);
-  const [opCards, setOpCards] = React.useState<Array<CarData>>([]);
-  const [bonus, setBonus] = React.useState<Array<CarData>>([]);
+  const [plCards, setPlCards] = React.useState<CarData[]>([]);
+  const [opCards, setOpCards] = React.useState<CarData[]>([]);
+  const [bonus, setBonus] = React.useState<CarData[]>([]);
   const [templateReady, setTemplateReady] = React.useState<boolean>(false);
   const [showResults, setShowResults] = React.useState<boolean>(false);
   const [colors, setColors] = React.useState<PlayerColors>(COLORS_EMPTY);
@@ -21,7 +21,7 @@ const Game = ({ game }: GameProps) => {
     setErrorMessage(error.message);
   }
 
-  function resolveFetching(data: Array<CarData>): void {
+  function resolveFetching(data: CarData[]): void {
     setBonus([]);
     setShowResults(false);
     setColors(COLORS_EMPTY);
@@ -39,7 +39,7 @@ const Game = ({ game }: GameProps) => {
     fetchCarIDs(resolveFetching, handleError);
   }
 
-  function setWinLoss(field: string, winLoss: Array<string>): void {
+  function setWinLoss(field: string, winLoss: string[]): void {
     if (game.ai.learning) {
       game.ai.learn(field, winLoss[0], opCards[0]);
     }

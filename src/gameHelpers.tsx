@@ -1,7 +1,4 @@
-export function fillDeck(
-  data: Array<CarData>,
-  deckSize: number
-): Array<CarData> {
+export function fillDeck(data: CarData[], deckSize: number): CarData[] {
   let deck = [];
   for (let i = 0; i < deckSize; i++) {
     const randomCard = Math.floor(Math.random() * data.length) + 1;
@@ -12,10 +9,10 @@ export function fillDeck(
 }
 
 export function getNewCards(
-  pl1Cards: Array<CarData>,
-  pl2Cards: Array<CarData>,
-  bonus: Array<CarData>
-): Array<CarData> {
+  pl1Cards: CarData[],
+  pl2Cards: CarData[],
+  bonus: CarData[]
+): CarData[] {
   return pl1Cards
     .concat(pl1Cards.splice(0, 1))
     .concat(pl2Cards.slice(0, 1))
@@ -23,7 +20,7 @@ export function getNewCards(
 }
 
 export async function fetchCarIDs(
-  resolveFetching: (data: Array<CarData>) => void,
+  resolveFetching: (data: CarData[]) => void,
   handleError: (error: Error) => void
 ): Promise<void> {
   await fetch("http://localhost:3000/cars")

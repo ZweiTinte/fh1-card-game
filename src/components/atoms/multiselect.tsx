@@ -1,9 +1,9 @@
 import * as React from "react";
 
 interface MultiselectProps {
-  dropDownItems: Array<string>;
-  setDropdownItems: React.Dispatch<React.SetStateAction<Array<string>>>;
-  dropDownData: Array<{ id: number; value: string }>;
+  dropDownItems: string[];
+  setDropdownItems: React.Dispatch<React.SetStateAction<string[]>>;
+  dropDownData: { id: number; value: string }[];
 }
 
 const Multiselect = ({

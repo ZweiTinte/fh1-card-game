@@ -14,14 +14,14 @@ const Card = ({
   const [currentCard, setCurrentCard] = React.useState({ img: "" });
   const [image, setImage] = React.useState<string>("");
   const [templateReady, setTemplateReady] = React.useState<Boolean>(false);
-  const [cardData, setCardData] = React.useState<Array<ButtonProps>>([]);
+  const [cardData, setCardData] = React.useState<ButtonProps[]>([]);
   const [cardName, setCardName] = React.useState<string>("");
 
   React.useEffect(() => {
     const car: CarData = deck[0];
     setTemplateReady(false);
     if (car !== undefined) {
-      const cardData: Array<ButtonProps> = [
+      const cardData: ButtonProps[] = [
         {
           text: `Top Speed: ${hidden ? Const.QUESTIONMARK : car.topspeed}km/h`,
           color: highlight[0] === Const.TOPSPEED ? highlight[1] : Const.EMPTY,

@@ -17,11 +17,11 @@ interface TextProps {
 }
 
 interface CardProps {
-  deck: Array<CarData>;
+  deck: CarData[];
   hidden: boolean;
   disabled: boolean;
   compareFields: (params: string) => void;
-  highlight: Array<string>;
+  highlight: string[];
 }
 
 interface ButtonProps extends TextProps {
@@ -30,7 +30,7 @@ interface ButtonProps extends TextProps {
 }
 
 interface InfoListProps extends TextProps {
-  list: Array<CarData>;
+  list: CarData[];
 }
 
 interface ImageProps {
@@ -39,17 +39,17 @@ interface ImageProps {
 }
 
 interface ButtonGroupProps {
-  buttons: Array<ButtonProps>;
+  buttons: ButtonProps[];
   disabled: boolean;
 }
 
 interface CardSectionProps {
-  plCards: Array<CarData>;
+  plCards: CarData[];
   showResults: boolean;
   playerTurn: boolean;
   gameEnded: boolean;
   colors: PlayerColors;
-  opCards: Array<CarData>;
+  opCards: CarData[];
   setWinLoss: (field: string, winLoss: string[]) => void;
   setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
   setGameEnded: React.Dispatch<React.SetStateAction<boolean>>;
@@ -58,7 +58,7 @@ interface CardSectionProps {
 interface CardSubSectionProps {
   showResults: boolean;
   playerTurn: boolean;
-  bonus: Array<CarData>;
+  bonus: CarData[];
   next: () => void;
   gameEnded: boolean;
 }
@@ -68,18 +68,18 @@ interface GameAreaProps {
   playerTurn: boolean;
   showResults: boolean;
   colors: PlayerColors;
-  opCards: Array<CarData>;
-  plCards: Array<CarData>;
+  opCards: CarData[];
+  plCards: CarData[];
   setWinLoss: (field: string, winLoss: string[]) => void;
   setShowResults: React.Dispatch<React.SetStateAction<boolean>>;
   setGameEnded: React.Dispatch<React.SetStateAction<boolean>>;
-  bonus: Array<CarData>;
+  bonus: CarData[];
   next: () => void;
 }
 
 interface PlayerColors {
-  plColor: Array<string>;
-  opColor: Array<string>;
+  plColor: string[];
+  opColor: string[];
 }
 
 interface Game {

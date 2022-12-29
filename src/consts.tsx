@@ -10,7 +10,7 @@ export const EMPTY: string = "";
 export const WIN: string = "winState";
 export const LOSE: string = "loseState";
 export const EQUAL: string = "equalState";
-export const FIELDS: Array<string> = [
+export const FIELDS: string[] = [
   TOPSPEED,
   POWER,
   ACCELERATION,
@@ -18,7 +18,7 @@ export const FIELDS: Array<string> = [
   CYLINDER,
   TORGUE,
 ];
-export const LOWER_FIELDS: Array<string> = [ACCELERATION, WEIGHT];
+export const LOWER_FIELDS: string[] = [ACCELERATION, WEIGHT];
 export const COLORS_EMPTY: PlayerColors = {
   plColor: [EMPTY, EMPTY],
   opColor: [EMPTY, EMPTY],

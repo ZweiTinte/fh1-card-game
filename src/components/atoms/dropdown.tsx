@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export type DropdownData = Array<{ id: number; value: Ai }>;
+export type DropdownData = { id: number; value: Ai }[];
 
 export interface DropdownProps {
   dropDownItem: Ai;

@@ -1,7 +1,7 @@
 interface Ai {
   name: string;
   learning: boolean;
-  data?: Array<AiData> | [];
+  data?: AiData[] | [];
   learn: (field: string, winLoss: string, cardId: CarData) => void;
   getAiResponse: (card: CarData) => string;
 }

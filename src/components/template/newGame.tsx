@@ -33,7 +33,7 @@ const NewGame = () => {
     setErrorMessage(error.message);
   }
 
-  function resolveFetching(data: Array<CarData>): void {
+  function resolveFetching(data: CarData[]): void {
     setMaxDeckSize(Math.floor(data.length / 2));
     setTemplateReady(true);
   }
